@@ -1,0 +1,15 @@
+{% createphp item as="rdf" noautotag %}
+<div class="widget widget_categories">
+    <div {{ createphp_attributes(rdf) }}>
+        <h3 class="widget_title" {{ createphp_attributes( rdf.contentTitle ) }}>{{ item.contentTitle }}</h3>
+        <div class="uploadbox" style="padding-bottom: 0px;">
+            <div  style="font-size: 9pt; text-align: justify">
+                <div {{ createphp_attributes( rdf.content ) }}>{{ item.content | raw }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="uploadbox" style="padding-top: 10px;">
+        {{ render(controller('CMSCareerBundle:Resume:form', {'request': originalRequest, 'language': app.request.locale })) }}
+    </div>
+</div>
+{% endcreatephp %}

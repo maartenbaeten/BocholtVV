@@ -1,0 +1,37 @@
+<div class="post" style="margin-top: 20px;">
+    <div class="post-content">
+        <div class="entry-summary">
+            <div class="row" style="padding-left: 4%; padding-right: 4%;">
+                <div class="text-center page-title">
+                    <h2 style="margin-top: 0;">{{ 'contact.sendMessageText' | trans }}</h2>
+                </div>
+                <div class="contact-wrap">
+                    <form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="{{ path('cms_submit_contact', {'menuKeyid': 1, 'language': app.request.locale }) }}">
+                        <div class="response">&nbsp;</div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <input id="contactname" type="text" name="contactname" value="" class="form-control" required="required" placeholder="{{ 'contact.name' | trans }}">
+                                </div>
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <input id="email" type="text" name="subject" value="{{ menuKey.menuItems[0].title }}" class="form-control" required="required" placeholder="{{ 'contact.subject' | trans }}">
+                                </div>
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <input id="subject" type="email" name="email" value="" class="form-control" required="required" placeholder="{{ 'contact.email' | trans }}">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <textarea id="message"  name="message" required="required" class="form-control" rows="7" placeholder="{{ 'contact.message' | trans }}"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button id="submitButton" type="submit" name="submit" class="btn btn-fullwidth">{{ 'contact.sendMessage' | trans }}</button>
+                        </div>
+                    </form>
+                </div><!--/.row-->
+            </div>
+        </div>
+    </div>
+</div>

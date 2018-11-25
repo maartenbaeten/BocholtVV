@@ -1,0 +1,35 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<div class="signin-header">
+    <a class="logo">{{ 'main.title'|trans }}</a>
+    <a class="btn btn-primary" href="/login">{{ 'security.login.title'|trans }}</a>
+</div>
+<h1 class="form-header">{{ 'security.register.create'|trans }}</h1>
+<form id="signup-form_id" action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="panel">
+    <div class="form-group">
+    {{ form_widget(form.firstName, {"attr":{"class":"form-control input-lg","placeholder":"security.register.full_name"}}) }}
+    </div>
+    <div class="form-group">
+    {{ form_widget(form.lastName, {"attr":{"class":"form-control input-lg","placeholder":"security.register.last_name"}}) }}
+    </div>
+    <div class="form-group">
+    {{ form_widget(form.username, {"attr":{"class":"form-control input-lg","placeholder":"security.login.username"}}) }}
+    </div>
+    <div class="form-group">
+    {{ form_widget(form.email, {"attr":{"class":"form-control input-lg","placeholder":"security.register.email"}}) }}
+    </div>
+    <div class="form-group">
+
+    {{ form_widget(form.plainPassword.first, {"attr":{"class":"form-control input-lg","placeholder":"security.register.password"}}) }}
+    </div>
+    <div class="form-group">
+    {{ form_widget(form.plainPassword.second, {"attr":{"class":"form-control input-lg","placeholder":"security.register.repeat_password"}}) }}
+
+    </div>
+    <div class="hidden">
+        {{ form_rest(form) }}
+    </div>
+
+    <div>
+        <input type="submit" class="btn btn-primary btn-lg btn-block" value="{{ 'security.register.create'|trans }}"  />
+    </div>
+</form>

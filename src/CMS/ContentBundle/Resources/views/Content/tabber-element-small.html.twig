@@ -1,0 +1,43 @@
+<div class="section section--club">
+    <div class="homepage-logo">
+        <a href="http://www.bocholtvv.be"><img src="/uploads/img/BVV_logo_white.png"></a>
+    </div>
+    <div class="tabber">
+        <div class="tabber__pickers" style="padding-top: 10rem;">
+            {% for item in content %}
+                <div class="tabber__pickers-tab tabber__pickers-tab--small" data-target="{{ item.contentAlias|lower }}">
+                    <div class="tabber__pickers-icon">
+                        <i class="icon icon--ball"></i>
+                    </div>
+                    {{ item.contentTitle }}
+                </div>
+            {% endfor %}
+            <div class="tabber__pickers-tab tabber__pickers-tab--small tabber__pickers-tab--active" data-target="aanduidingen">
+                <div class="tabber__pickers-icon">
+                    <i class="icon icon--ball"></i>
+                </div>
+                KBVB Aanduidingen
+            </div>
+        </div>
+        <div class="tabber__content">
+            {% for item in content %}
+                <div class="tabber_text-holder hidden" id="{{ item.contentAlias|lower }}">
+                    {% createphp item as="rdf" noautotag %}
+                    <div {{ createphp_attributes(rdf) }}>
+                        <div class="tabber__content-title" {{ createphp_attributes( rdf.contentTitle ) }}>{{ createphp_content( rdf.contentTitle ) }}</div>
+                        <div class="tabber__content-text" {{ createphp_attributes( rdf.content ) }}>{{ createphp_content( rdf.content ) }}</div>
+                    </div>
+                    {% endcreatephp %}
+                </div>
+            {% endfor %}
+            <div class="tabber_text-holder" id="aanduidingen">
+                <div>
+                    <div class="tabber__content-title">Aanduidingen</div>
+                    <div class="tabber__content-text">
+                        {{ render(controller('CMSTeamBundle:Team:youthAppointments')) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="row" style="padding-left: 4%; padding-right: 4%;">
+    <div class="text-center page-title">
+        <h2>{{ 'contact.sendMessageText' | trans }}</h2>
+    </div>
+    <div class="contact-wrap">
+        <div class="row padding-top-20">
+            <div class="col-md-6" style="text-align: center;">
+                <span class="street">Vital Decosterstraat 67A</span>
+                <div class="city">3000 Leuven</div>
+                <div class="mail"><span class="email">info@crossbridge.be</span></div>
+                <div class="phone"><span class="number">+32 (0)9 335 86 13</span></div>
+            </div>
+            <div class="col-md-6" style="text-align: center;">
+                <span class="street">Hoogpoort 37</span>
+                <div class="city">9000 Gent</div>
+                <div class="mail"><span class="email">info@crossbridge.be</span></div>
+                <div class="phone"><span class="number">+32 (0)9 335 86 13</span></div>
+            </div>
+        </div>
+        <form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="{{ path('cms_submit_contact', {'menuKeyid': 1, 'language': app.request.locale }) }}">
+            <div class="response">&nbsp;</div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <input id="contactname" type="text" name="contactname" value="" class="form-control" required="required" placeholder="{{ 'contact.name' | trans }}">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <input id="email" type="text" name="subject" value="" class="form-control" required="required" placeholder="{{ 'contact.subject' | trans }}">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <input id="subject" type="email" name="email" value="" class="form-control" required="required" placeholder="{{ 'contact.email' | trans }}">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <textarea id="message"  name="message" required="required" class="form-control" rows="7" placeholder="{{ 'contact.message' | trans }}"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button id="submitButton" type="submit" name="submit" class="btn btn-fullwidth">{{ 'contact.sendMessage' | trans }}</button>
+            </div>
+        </form>
+    </div><!--/.row-->
+</div><!--/.container-->

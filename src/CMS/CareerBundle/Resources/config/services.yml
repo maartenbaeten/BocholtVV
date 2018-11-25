@@ -1,0 +1,7 @@
+parameters:
+#    cms_career.example.class: CMS\CareerBundle\Example
+
+services:
+#    cms_career.example:
+#        class: %cms_career.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

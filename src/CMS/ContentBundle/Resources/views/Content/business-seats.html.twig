@@ -1,0 +1,34 @@
+<div class="section section--menu-seperator"></div>
+<div class="section section--news">
+    <div class="container">
+        {% createphp item as="rdf" noautotag %}
+        <div {{ createphp_attributes(rdf) }}>
+            <div class="news">
+                <div class="news__title" style="margin-bottom: 3rem;">
+                    <div {{ createphp_attributes( rdf.contentTitle ) }}>{{ createphp_content( rdf.contentTitle ) }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <form action="{{ oneup_uploader_endpoint('gallery') }}" style='background:url("{{ item.contentimage }}"); background-repeat: no-repeat; background-size: 100% 100%;' class="dropzone imagezone">
+                                <input type="hidden" name="itemid" value="{{ item.id }}" />
+                                <div class="dz-message" data-dz-message>
+                                <span>
+                                    <a class="overlay small">
+                                        <i class="fa fa-plus"></i>
+                                    </a>
+                                </span>
+                                </div>
+                            </form>
+                        {% endif %}
+                        <img src="{{ item.contentImage }}" width="100%">
+                    </div>
+                    <div class="col-md-6" style="font-size:1.6rem;">
+                        <div {{ createphp_attributes( rdf.content ) }}>{{ createphp_content( rdf.content ) }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endcreatephp %}
+    </div>
+</div>

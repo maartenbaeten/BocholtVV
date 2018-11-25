@@ -1,0 +1,65 @@
+CMS\TeamBundle\Entity\Team:
+    properties:
+        creator:
+            - NotBlank: ~
+        teamName:
+            - NotBlank: ~
+#        teamAlias:
+#            - NotBlank: ~
+        teamDescription:
+            - NotBlank: ~
+#        teamImage:
+#            - NotBlank: ~
+        classification:
+            - NotBlank: ~
+
+CMS\TeamBundle\Entity\TeamMember:
+    properties:
+#        creator:
+#            - NotBlank: ~
+        lastName:
+            - NotBlank: ~
+        firstName:
+            - NotBlank: ~
+#        playerAlias:
+#            - NotBlank: ~
+#        street:
+#            - NotBlank: ~
+#        number:
+#            - NotBlank: ~
+#        zip:
+#            - NotBlank: ~
+#        city:
+#            - NotBlank: ~
+#        playerImage:
+#            - NotBlank: ~
+#        email:
+#            - NotBlank: ~
+
+CMS\TeamBundle\Entity\Role:
+    properties:
+       roleName:
+             - NotBlank: ~
+       number:
+             - NotBlank: ~
+
+CMS\TeamBundle\Entity\Calendar:
+    properties:
+       creator:
+             - NotBlank: ~
+       date:
+            - NotBlank: ~
+       challengerName:
+            - NotBlank: ~
+
+CMS\TeamBundle\Entity\News:
+    properties:
+       title:
+             - NotBlank: ~
+       content:
+             - NotBlank: ~
+
+CMS\TeamBundle\Entity\Category:
+    properties:
+       name:
+             - NotBlank: ~

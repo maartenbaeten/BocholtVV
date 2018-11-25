@@ -1,0 +1,10 @@
+<ul class="nav navbar-nav navbar-right">
+    <li class="hidden active">
+        <a href="#page-top"></a>
+    </li>
+    {% for key in items %}
+        <li>
+            <a {% if key.menuItems[0].target %}target="_blank"{% endif %} class="navbar__item {% if key.id == menuKey.id %}navbar__item--active{% endif %} page-scroll" href="{% if key.menuItems[0].target %}{{ key.menuItems[0].target }}{% else %}{{ path('cms_content_homepage',{'id': key.menuItems[0].alias, '_locale': app.request.locale}) }}{% endif %}">{{ key.menuItems[0].title }}</a>
+        </li>
+    {% endfor %}
+</ul>

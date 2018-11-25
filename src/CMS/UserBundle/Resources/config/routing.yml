@@ -1,0 +1,25 @@
+#cms_user_homepage:
+#    pattern:  /hello/{name}
+#    defaults: { _controller: CMSUserBundle:Default:index }
+
+# USER
+
+admin_user_list:
+   path:     /user/list
+   defaults: { _controller: CMSUserBundle:User:list }
+
+admin_user_create:
+   path:     /user/create
+   defaults: { _controller: CMSUserBundle:User:create }
+
+admin_user_edit:
+   path:     /user/edit/{id}
+   defaults: { _controller: CMSUserBundle:User:edit }
+   requirements:
+     id:  \d+
+
+admin_user_delete:
+   path:     /user/delete/{id}
+   defaults: { _controller: CMSUserBundle:User:delete }
+   requirements:
+     id:  \d+

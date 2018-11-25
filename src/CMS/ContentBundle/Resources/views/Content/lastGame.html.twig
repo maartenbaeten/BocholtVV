@@ -1,0 +1,8 @@
+<div class="section section--last-match">
+    <div class="container">
+        <div class="match-result">
+            <div class="match-result__title">Laatste Wedstrijd</div>
+            {{ render(controller('CMSTeamBundle:Team:getlatestGame', { 'teamId': 1, 'originalRequest': originalRequest, 'template': 'CMSContentBundle:Content:lastGame-element.html.twig' })) }}
+        </div>
+    </div>
+</div>

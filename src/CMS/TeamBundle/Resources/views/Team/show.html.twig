@@ -1,0 +1,45 @@
+{% extends "@CMSTeam/index.html.twig" %}
+
+{% block main %}
+
+    <div class="row wrapper border-bottom white-bg page-heading" style="margin-bottom: 10px;">
+        <div class="col-lg-10">
+            <h2>
+                {{ team.teamName }}
+            </h2>
+        </div>
+    </div>
+    <div class="wrapper wrapper-content-wide animated fadeInRight">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ibox float-e-margins">
+
+                    {#TODO#}
+
+                    <div class="ibox-content">
+                        <div class="row">
+                            {% if team.teamImage %}
+                                <div class="col-lg-6">
+                                   <img src="{{ asset('uploads/team-images/' ~ team.teamImage) }}" height="300px">
+                                </div>
+                            {% endif %}
+                            <div>
+                                <div class="col-lg-5 col-lg-offset-1">
+                                    <div class="row">
+                                        {{ team.teamAlias }}
+                                    </div>
+                                    <div class="row">
+                                        {{ team.creator }}
+                                    </div>
+                                    <div class="row">
+                                        {{ team.teamDescription }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

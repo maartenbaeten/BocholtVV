@@ -1,0 +1,37 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Edit Category</h4>
+    </div>
+    <div class="modal-body">
+        {{ form_start(form, {'attr': {'class': 'nomargin'}}) }}
+        {% for item in form.contentItems %}
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-md-4">
+                    <img src="{{ contentItems[loop.index-1].contentimage }}" style="width: 100%">
+                </div>
+                <div class="col-md-8">
+                    <div class="col-md-6">
+                        {{ form_widget(item.contentTitle, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_widget(item.contentlink, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="col-md-12">
+                        {{ form_widget(item.content, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        {{ form_rest(form) }}
+        <div class="seperator20"></div>
+        <div class="row">
+            <div class="col-md-12">
+                {{ form_widget(form.save, {'attr': {'class': 'btn btn-fullwidth'}}) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+    {{ tinymce_init() }}
+</div>

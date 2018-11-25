@@ -1,0 +1,188 @@
+{% extends "@CMSTeam/index.html.twig" %}
+{% block main %}
+    <div class="wrapper wrapper-content-wide animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="wrapper wrapper-content">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="ibox-title">
+                                <h5>Number of members per team</h5>
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                    <a class="close-link">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                <canvas id="numberOfMembersPerTeamChart" style="padding-right:35px"></canvas>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="ibox-title">
+                                <h5>Number of news per team</h5>
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                    <a class="close-link">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                <canvas id="numberOfNewsPerTeamChart" style="padding-right:35px"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if is_granted('ROLE_SUPER_ADMIN') %}
+        <div class="wrapper wrapper-content-wide animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="wrapper wrapper-content">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="ibox-title">
+                                <h5>Team members per paid membership</h5>
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                    <a class="close-link">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                <canvas id="membersPerPaidMembershipChart" style="padding-right:35px"></canvas>
+                            </div>
+                        </div>
+                        {#<div class="col-md-6">#}
+                            {#<div class="ibox-title">#}
+                            {#</div>#}
+                            {#<div class="ibox-content">#}
+                            {#</div>#}
+                        {#</div>#}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+{% endblock %}
+
+{% block customJavascripts %}
+    <script src="{{ asset('assets/vendor/Chart.js/dist/Chart.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            var numberOfMembersPerTeamData = getBarChartData({{ numberOfMembersPerTeamStats|json_encode|raw }});
+            var numberOfNewsPerTeamData = getBarChartData({{ numberOfNewsPerTeamStats|json_encode|raw }});
+            var membersPerPaidMembershipData = getPieChartData({{ membersPerPaidMembershipStats|json_encode|raw }});
+
+            var barNumberOfMembersPerTeamContext = document.getElementById("numberOfMembersPerTeamChart").getContext("2d");
+            var barChartNumberOfMembersPerTeam = new Chart(barNumberOfMembersPerTeamContext, {
+                type: 'bar',
+                data: numberOfMembersPerTeamData,
+                options: {
+                    legend: {
+                        display: false,
+                    }
+                }
+            });
+
+            var barNumberOfNewsPerTeamContext = document.getElementById("numberOfNewsPerTeamChart").getContext("2d");
+            var barChartNumberOfNewsPerTeam = new Chart(barNumberOfNewsPerTeamContext, {
+                type: 'bar',
+                data: numberOfNewsPerTeamData,
+                scaleOverride: true,
+                scaleSteps: 1,
+                options:
+                {
+                    scales: {
+                        yAxes: [{
+                            display: true,
+                            ticks: {
+                                suggestedMin: 0,
+                                stepSize: 1
+                            }
+                        }]
+                    },
+                    legend: {
+                        display: false,
+                    }
+
+                }
+            });
+
+            var membersPerPaidMembershipContext = document.getElementById("membersPerPaidMembershipChart").getContext("2d");
+            var pieChartmembersPerPaidMembership = new Chart(membersPerPaidMembershipContext, {
+                type: 'pie',
+                data: membersPerPaidMembershipData,
+                options: {}
+            });
+
+        });
+
+        function getBarChartData(data) {
+            return  {
+                labels: data["labels"],
+                datasets: [
+                    {
+                        backgroundColor: 'rgba(26,179,148,0.5)',
+                        borderColor: "rgba(26,179,148,0.7)",
+                        pointBackgroundColor: "rgba(26,179,148,1)",
+                        pointBorderColor: "#fff",
+                        borderWidth: 1,
+                        data: data["data"]
+                    }
+                ]
+            };
+        }
+
+        function getPieChartData(data) {
+            return {
+                labels: data["labels"],
+                datasets: [
+                    {
+                        data: data["data"],
+                        backgroundColor: [
+                            "#FF6384",
+                            "#36A2EB",
+                            "#FFCE56",
+                            "#32CD32",
+                            "#FF4500",
+                            "#cd82ad",
+                            "#2f4074",
+                            "#b7b83f",
+                            "#448e4d",
+                            "#4D4D4D",
+                            "#FAA43A"
+                        ],
+                        hoverBackgroundColor: [
+                            "#FF6384",
+                            "#36A2EB",
+                            "#FFCE56",
+                            "#32CD32",
+                            "#FF4500",
+                            "#cd82ad",
+                            "#2f4074",
+                            "#b7b83f",
+                            "#448e4d",
+                            "#4D4D4D",
+                            "#FAA43A"
+                        ]
+                    }]
+            };
+        }
+
+    </script>
+
+{% endblock %}

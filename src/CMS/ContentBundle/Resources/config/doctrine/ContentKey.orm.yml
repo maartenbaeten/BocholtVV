@@ -1,0 +1,69 @@
+CMS\ContentBundle\Entity\ContentKey:
+    type: entity
+    table: CMS_content_key
+    repositoryClass: CMS\ContentBundle\Entity\ContentRepository
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        creationDate:
+            type: date
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+    oneToMany:
+        positions:
+            targetEntity: CMS\ContentBundle\Entity\ContentPosition
+            cascade: {  }
+            mappedBy: contentKey
+            inversedBy: null
+            orphanRemoval: false
+            orderBy: null
+        contentItems:
+            targetEntity: CMS\ContentBundle\Entity\Content
+            cascade: {  }
+            mappedBy: contentKey
+            inversedBy: null
+            orphanRemoval: false
+            orderBy: null
+    manyToOne:
+        contentType:
+            targetEntity: CMS\ContentBundle\Entity\Types
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                content_type_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    manyToMany:
+        tags:
+            targetEntity: CMS\ContentBundle\Entity\Tags
+            cascade: {  }
+            mappedBy: null
+            inversedBy: contentItems
+            joinTable:
+                name: content_tags
+                schema: null
+                joinColumns:
+                    -
+                        name: contentkey_id
+                        referencedColumnName: id
+                        onDelete: CASCADE
+                inverseJoinColumns:
+                    -
+                        name: tags_id
+                        referencedColumnName: id
+                        onDelete: CASCADE
+            orderBy: null
+    lifecycleCallbacks: {  }

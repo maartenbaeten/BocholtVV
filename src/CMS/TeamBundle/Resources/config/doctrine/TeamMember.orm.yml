@@ -1,0 +1,97 @@
+CMS\TeamBundle\Entity\TeamMember:
+    type: entity
+    table: team_member
+    repositoryClass: CMS\TeamBundle\Repository\TeamMemberRepository
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        created:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        creator:
+            type: string
+            scale: 0
+            length: 200
+            unique: false
+            nullable: true
+            precision: 0
+        lastName:
+            type: string
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        firstName:
+            type: string
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        playerAlias:
+            type: string
+            unique: true
+            nullable: true
+        street:
+            type: string
+            nullable: true
+        number:
+            type: integer
+            nullable: true
+        zip:
+            type: string
+            nullable: true
+        city:
+            type: string
+            nullable: true
+        teamNumber:
+            type: integer
+            nullable: true
+        nationality:
+            type: string
+            nullable: true
+        playerImage:
+            type: string
+            unique: true
+            nullable: true
+        email:
+            type: string
+            nullable: true
+        birthDate:
+            type: date
+            scale: 0
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+        membershipPaid:
+            type: boolean
+            nullable: false
+    lifecycleCallbacks:
+            prePersist: [ preUpload ]
+            preUpdate: [ preUpload ]
+            postPersist: [ upload ]
+            postUpdate: [ upload ]
+            postRemove: [ removeUpload ]
+    manyToOne:
+        team:
+            targetEntity: CMS\TeamBundle\Entity\Team
+            inversedBy: members
+        role:
+            targetEntity: CMS\TeamBundle\Entity\Role
+            inversedBy: members
+    lifecycleCallbacks: {  }

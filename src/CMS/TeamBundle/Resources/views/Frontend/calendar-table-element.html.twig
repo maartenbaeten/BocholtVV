@@ -1,0 +1,8 @@
+{% for element in elements %}
+    <tr>
+        <td>{{ element.date|date('d/m/Y - G:i') }}</td>
+        <td>{% if not element.home %}{{ element.challengerName }}{% else %}Bocholt VV{% endif %}</td>
+        <td>{% if element.home %}{{ element.challengerName }}{% else %}Bocholt VV{% endif %}</td>
+        <td>{{ element.score }}</td>
+    </tr>
+{% endfor %}

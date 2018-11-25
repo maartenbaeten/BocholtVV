@@ -1,0 +1,11 @@
+<!-- Resources/rdf-mappings/Symfony.CMS.ContentBundle.Categories.xml -->
+<type
+        xmlns:schema="http://schema.org/"
+        typeof="schema:WebPage"
+        >
+    <children>
+        <property property="schema:headline" identifier="categoryname"/>
+        <property property="schema:text" identifier="description" />
+    </children>
+</type>
+

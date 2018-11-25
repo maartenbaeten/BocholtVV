@@ -1,0 +1,204 @@
+cms_team_homepage:
+    path:     /
+    defaults: { _controller: CMSTeamBundle:Default:index }
+
+admin_team_dashboard:
+    path:     /dashboard
+    defaults: { _controller: CMSTeamBundle:Dashboard:dashboard }
+
+# TEAM MEMBER
+
+admin_teammember_list:
+    path:     /teammember
+    defaults: { _controller: CMSTeamBundle:TeamMember:list }
+
+admin_teammember_list_by_team:
+    path:     /teammember/team/{id}
+    defaults: { _controller: CMSTeamBundle:TeamMember:listByTeam }
+
+admin_teammember_show:
+    path:     /teammember/{id}
+    defaults: { _controller: CMSTeamBundle:TeamMember:show }
+    requirements:
+      id:  \d+
+
+admin_teammember_create:
+    path:     /teammember/create
+    defaults: { _controller: CMSTeamBundle:TeamMember:create }
+
+admin_teammember_import:
+    path:     /teammember/import
+    defaults: { _controller: CMSTeamBundle:TeamMember:import }
+
+admin_teammember_update:
+    path:     /teammember/update/{id}
+    defaults: { _controller: CMSTeamBundle:TeamMember:update }
+    requirements:
+      id:  \d+
+
+admin_teammember_delete:
+    path:     /teammember/delete/{id}
+    defaults: { _controller: CMSTeamBundle:TeamMember:delete }
+    requirements:
+      id:  \d+
+
+admin_teammember_delete_image:
+    path:     /teammember/delete/image/{id}
+    defaults: { _controller: CMSTeamBundle:TeamMember:deleteImage }
+    requirements:
+      id:  \d+
+
+# TEAM
+
+admin_team_list:
+    path:     /team
+    defaults: { _controller: CMSTeamBundle:Team:list }
+
+admin_team_list_by_category:
+    path:     /team/list/by-category/{id}
+    defaults: { _controller: CMSTeamBundle:Team:listByCategory }
+    requirements:
+      id:  \d+
+
+admin_team_show:
+    path:     /team/{id}
+    defaults: { _controller: CMSTeamBundle:Team:show }
+    requirements:
+      id:  \d+
+
+admin_team_create:
+    path:     /team/create
+    defaults: { _controller: CMSTeamBundle:Team:create }
+
+admin_team_update:
+    path:     /team/update/{id}
+    defaults: { _controller: CMSTeamBundle:Team:update }
+    requirements:
+      id:  \d+
+
+admin_team_delete:
+    path:     /team/delete/{id}
+    defaults: { _controller: CMSTeamBundle:Team:delete }
+    requirements:
+      id:  \d+
+
+admin_team_delete_image:
+    path:     /team/delete/image/{id}
+    defaults: { _controller: CMSTeamBundle:Team:deleteImage }
+    requirements:
+      id:  \d+
+
+
+# ROLE
+
+admin_role_list:
+    path:     /role
+    defaults: { _controller: CMSTeamBundle:Role:list }
+
+admin_role_create:
+    path:     /role/create
+    defaults: { _controller: CMSTeamBundle:Role:create }
+
+admin_role_update:
+    path:     /role/update/{id}
+    defaults: { _controller: CMSTeamBundle:Role:update }
+    requirements:
+      id:  \d+
+
+admin_role_delete:
+    path:     /role/delete/{id}
+    defaults: { _controller: CMSTeamBundle:Role:delete }
+    requirements:
+      id:  \d+
+
+# CALENDAR
+
+admin_calendar_list:
+   path:     /calendar
+   defaults: { _controller: CMSTeamBundle:Calendar:list }
+
+admin_calendar_create:
+   path:     /calendar/create
+   defaults: { _controller: CMSTeamBundle:Calendar:create }
+
+admin_calendar_update:
+   path:     /calendar/update/{id}
+   defaults: { _controller: CMSTeamBundle:Calendar:update }
+   requirements:
+     id:  \d+
+
+admin_calendar_delete:
+   path:     /calendar/delete/{id}
+   defaults: { _controller: CMSTeamBundle:Calendar:delete }
+   requirements:
+     id:  \d+
+
+# NEWS
+
+admin_news_list:
+    path:     /news
+    defaults: { _controller: CMSTeamBundle:News:list }
+
+admin_news_list_by_team:
+    path:     /news/team/{id}
+    defaults: { _controller: CMSTeamBundle:News:listByTeam }
+
+admin_news_show:
+    path:     /news/{id}
+    defaults: { _controller: CMSTeamBundle:News:show }
+    requirements:
+      id:  \d+
+
+admin_news_create:
+    path:     /news/create
+    defaults: { _controller: CMSTeamBundle:News:create }
+
+admin_news_update:
+    path:     /news/update/{id}
+    defaults: { _controller: CMSTeamBundle:News:update }
+    requirements:
+      id:  \d+
+
+admin_news_delete:
+    path:     /news/delete/{id}
+    defaults: { _controller: CMSTeamBundle:News:delete }
+    requirements:
+      id:  \d+
+
+admin_news_delete_image:
+    path:     /news/delete/image/{id}
+    defaults: { _controller: CMSTeamBundle:News:deleteImage }
+    requirements:
+      id:  \d+
+
+# CATEGORY
+
+admin_category_list:
+   path:     /category/list
+   defaults: { _controller: CMSTeamBundle:Category:list }
+
+admin_category_create:
+   path:     /category/create
+   defaults: { _controller: CMSTeamBundle:Category:create }
+
+admin_category_edit:
+   path:     /category/edit/{id}
+   defaults: { _controller: CMSTeamBundle:Category:edit }
+   requirements:
+     id:  \d+
+
+admin_category_delete:
+   path:     /category/delete/{id}
+   defaults: { _controller: CMSTeamBundle:Category:delete }
+   requirements:
+     id:  \d+
+
+# NEWS ATTACHMENT
+
+#admin_news_attachment_download:
+#    path: /news-attachment/download/{id}
+#    defaults: {_controller: CMSTeamBundle:NewsAttachment:download}
+
+admin_news_attachment_delete:
+    path: /news-attachment/delete/{id}
+    defaults: {_controller: CMSTeamBundle:NewsAttachment:delete}

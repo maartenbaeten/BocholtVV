@@ -1,0 +1,20 @@
+CMS\TeamBundle\Entity\Category:
+    type: entity
+    table: null
+    repositoryClass: CMS\TeamBundle\Repository\CategoryRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+    oneToMany:
+        teams:
+            targetEntity: CMS\TeamBundle\Entity\Team
+            mappedBy: category
+            cascade: ["persist", "remove"]
+    lifecycleCallbacks: {  }

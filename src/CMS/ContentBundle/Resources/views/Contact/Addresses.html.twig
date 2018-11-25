@@ -1,0 +1,12 @@
+{% for item in content %}
+    {% createphp item as="rdf" noautotag %}
+        <div {{ createphp_attributes(rdf) }}>
+            <li class="col-sm-6">
+                <h2 {{ createphp_attributes( rdf.contentTitle ) }}>{{ createphp_content( rdf.contentTitle ) }}</h2>
+                <address>
+                    <div {{ createphp_attributes( rdf.content ) }}>{{ createphp_content( rdf.content ) }}</div>
+                </address>
+            </li>
+        </div>
+    {% endcreatephp %}
+{% endfor %}

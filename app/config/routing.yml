@@ -1,0 +1,64 @@
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"
+
+elfinder:
+     resource: "@FMElfinderBundle/Resources/config/routing.yml"
+
+admin_news_attachment_download:
+    path: /news-attachment/download/{id}
+    defaults: {_controller: CMSTeamBundle:NewsAttachment:download}
+
+cms_team:
+    resource: "@CMSTeamBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
+cms_career:
+    resource: "@CMSCareerBundle/Resources/config/routing.yml"
+    prefix:   /
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+    prefix:   /
+
+cms_user:
+    resource: "@CMSUserBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
+welcome:
+    pattern: /user/login
+    defaults: { _controller: CMSUserBundle:Default:index }
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+adesigns_calendar:
+  resource: "@ADesignsCalendarBundle/Resources/config/routing.xml"
+
+#_security_check:
+#    pattern: /user/login_check
+#    defaults: { _controller: CMSUserBundle:Default:securityCheck }
+
+_logout:
+    pattern: /user/logout
+    defaults: { _controller: CMSUserBundle:Default:logout }
+
+article_article:
+    resource: "@CMSContentBundle/Resources/config/routing.yml"
+    prefix:   /
+
+create:
+    resource: "@CmfCreateBundle/Resources/config/routing/rest.xml"
+
+create_image:
+    resource: "@CmfCreateBundle/Resources/config/routing/image.xml"
+
+oneup_uploader:
+    resource: .
+    type: uploader
+
+cmf_media_file:
+    resource: "@CmfMediaBundle/Resources/config/routing/file.xml"
+
+cmf_media_image:
+    resource: "@CmfMediaBundle/Resources/config/routing/image.xml"
+

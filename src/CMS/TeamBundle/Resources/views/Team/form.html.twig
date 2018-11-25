@@ -1,0 +1,116 @@
+{% extends "@CMSTeam/index.html.twig" %}
+
+{% block main %}
+
+    <div class="row wrapper border-bottom white-bg page-heading" style="margin-bottom: 10px;">
+        <div class="col-lg-10">
+            <h2>
+                {% block title %}
+                {% endblock %}
+            </h2>
+        </div>
+    </div>
+    <div class="wrapper wrapper-content-wide animated fadeInRight">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="form-group">
+                                        {{ form_widget(form.teamName, {'attr':{'placeholder':"Team name", 'class': 'form-control'}} ) }}
+                                        {{ form_errors(form.teamName)}}
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    {{ form_widget(form.ordering, {'attr':{'placeholder':"Ordering", 'class': 'form-control'}} ) }}
+                                    {{ form_errors(form.ordering)}}
+                                </div>
+                                <div class="col-lg-2">
+                                    {{ form_label(form.showRanking) }}
+                                    {{ form_widget(form.showRanking) }}
+                                    {{ form_errors(form.showRanking)}}
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        {{ form_widget(form.creator, {'attr':{'placeholder':"Creator", 'class': 'form-control'}} ) }}
+                                        {{ form_errors(form.creator)}}
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    {{ form_widget(form.file, {'attr':{'class': 'form-control'}} ) }}
+                                    {{ form_errors(form.file)}}
+                                </div>
+                                <div class="col-lg-4">
+                                    {{ form_widget(form.category, {'attr':{'class': 'form-control'}} ) }}
+                                    {{ form_errors(form.category)}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label>Team description</label>
+                                        {{ form_widget(form.teamDescription, {'attr':{'class': 'form-control'}}  ) }}
+                                        {{ form_errors(form.teamDescription)}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group team-classification" data-prototype="{% filter escape %}{{ include('@CMSTeam/Team/form_classification.html.twig', { 'form': form.classification.vars.prototype }) }}{% endfilter %}">
+                                        <label class="m-b-md">Team classification</label>
+                                        <div>
+                                            <div class="row m-b-sm text-center">
+                                                <div class="col-xs-1 col-xs-1-sm"></div>
+                                                <div class="col-xs-1 col-xs-1-sm text-left">Positie</div>
+                                                <div class="col-xs-2 text-left">Naam</div>
+                                                <div class="col-xs-1 col-xs-1-sm">M</div>
+                                                <div class="col-xs-1  col-xs-1-sm">W</div>
+                                                <div class="col-xs-1  col-xs-1-sm">G</div>
+                                                <div class="col-xs-1  col-xs-1-sm">V</div>
+                                                <div class="col-xs-1  col-xs-1-sm">F</div>
+                                                <div class="col-xs-1  col-xs-1-sm">A</div>
+                                                <div class="col-xs-1  col-xs-1-sm">GD</div>
+                                                <div class="col-xs-1  col-xs-1-sm">PTN</div>
+                                                <div class="col-xs-1  col-xs-1-sm"></div>
+                                            </div>
+                                        </div>
+                                        <div id="ranking">
+                                            {% for classification in form.classification %}
+                                                <div class="row m-b-sm" data-row-id="{{ loop.index }}">
+                                                    <div class="col-xs-1 col-xs-1-sm" style="text-align: center; padding-top: 8px;"><a href="#" class="delete-ranking-row"><i class="fa fa-trash"></i></a> <a href="#" class="up-ranking-row"><i class="fa fa-arrow-up"></i></a> <a href="#" class="down-ranking-row"><i class="fa fa-arrow-down"></i></a></div>
+                                                    <div class="col-xs-1 col-xs-1-sm">{{ form_widget(classification.position, {'attr': {'class': 'form-control'}}) }}</div>
+                                                    <div class="col-xs-2">{{ form_widget(classification.teamName, {'attr': {'class': 'form-control'}}) }}</div>
+                                                    <div class="col-xs-1 col-xs-1-sm">{{ form_widget(classification.M, {'attr': {'class': 'form-control'}}) }}</div>
+                                                    <div class="col-xs-1 col-xs-1-sm">{{ form_widget(classification.W, {'attr': {'class': 'form-control'}}) }}</div>
+                                                    <div class="col-xs-1 col-xs-1-sm">{{ form_widget(classification.G, {'attr': {'class': 'form-control'}}) }}</div>
+                                                    <div class="col-xs-1 col-xs-1-sm">{{ form_widget(classification.V, {'attr': {'class': 'form-control'}}) }}</div>
+                                                    <div class="col-xs-1 col-xs-1-sm">{{ form_widget(classification.F, {'attr': {'class': 'form-control'}}) }}</div>
+                                                    <div class="col-xs-1 col-xs-1-sm">{{ form_widget(classification.A, {'attr': {'class': 'form-control'}}) }}</div>
+                                                    <div class="col-xs-1 col-xs-1-sm">{{ form_widget(classification.GD, {'attr': {'class': 'form-control'}}) }}</div>
+                                                    <div class="col-xs-1 col-xs-1-sm">{{ form_widget(classification.PTN, {'attr': {'class': 'form-control'}}) }}</div>
+                                                    <div class="col-xs-1 col-xs-1-sm">{{ form_widget(classification.bocholtVV, {'attr': {'class': 'form-control'}}) }} {{ form_rest(classification) }}</div>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                        <div id="add-row"><a href="#" class="btn btn-lg btn-primary"><i class="fa fa-plus"></i></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12" style="padding-bottom: 20px;">
+                                    {{ form_widget(form.save, {'attr' : {'class' : ' btn btn-lg btn-full-width btn-primary m-t-n-xs eventFormButton'} }) }}
+                                </div>
+                            </div>
+                        {{ form_end(form) }}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

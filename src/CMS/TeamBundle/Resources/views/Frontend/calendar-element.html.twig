@@ -1,0 +1,26 @@
+{% for element in elements %}
+    <div class="calendar">
+        <div class="calendar__content">
+            <div class="calendar__content-team">
+                <div class="calendar__content-logo">
+                    <img class="calendar__content-logo-image" src="{% if not element.home %}{% if element.webPath %}/{{ element.webPath }}{% endif %}{% else %}/uploads/img/bocholt_vv.png{% endif %}">
+                </div>
+                <div class="calendar__content-name">
+                    {% if not element.home %}{{ element.challengerName }}{% else %}Bocholt VV{% endif %}
+                </div>
+            </div>
+            <div class="calendar__content-scoreholder">
+                <div class="calendar__content-score">{% if element.score %}{{ element.score }}{% else %}.. - ..{% endif %}</div>
+                <div class="calendar__content-match-date">{{ element.date|date('d-m-Y, G:i') }}</div>
+            </div>
+            <div class="calendar__content-team">
+                <div class="calendar__content-logo">
+                    <img class="calendar__content-logo-image" src="{% if element.home %}{% if element.webPath %}/{{ element.webPath }}{% endif %}{% else %}/uploads/img/bocholt_vv.png{% endif %}">
+                </div>
+                <div class="calendar__content-name">
+                    {% if element.home %}{{ element.challengerName }}{% else %}Bocholt VV{% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}

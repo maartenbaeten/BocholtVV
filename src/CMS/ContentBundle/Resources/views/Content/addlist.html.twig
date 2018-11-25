@@ -1,0 +1,14 @@
+<div class="row">
+{% for type in types %}
+	<div class="col-md-3">
+		<div class="image-box mb-20">
+			<div class="overlay-container">
+				<a href="{{ path('add_content', {'type': type.id , 'language': app.request.locale, 'menuKeyid': menuKey.id, 'position': position   }) }}">
+				<img src="{{ type.imagePath }}" style="width: 100%" alt="">
+				</a>
+			</div>
+			<a href="{{ path('add_content', {'type': type.id , 'language': app.request.locale, 'menuKeyid': menuKey.id, 'position': position  }) }}" class="btn btn-light-gray btn-lg btn-block btn-reform">{{ type.typeName }}</a>
+		</div>
+	</div>
+{% endfor %}
+</div>

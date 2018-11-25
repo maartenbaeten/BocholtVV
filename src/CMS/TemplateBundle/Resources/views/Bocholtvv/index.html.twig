@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Bocholt VV</title>
+    <meta name="author" content="Bocholt VV" />
+    <meta name="description" content="Bocholt VV">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Koninklijke Bocholter VV is een Belgische voetbalclub uit Bocholt in Limburg. De club is aangesloten bij de KBVB met stamnummer 595.">
+    <meta name="author" content="Koninklijke Bocholter VV">
+    <meta property="og:title" content="Koninklijke Bocholter VV" />
+    <meta property="og:site_name" content="Koninklijke Bocholter VV"/>
+    <meta property="og:image" content="http://www.bocholtvv.be/uploads/img/bocholtvv_facebook.png"/>
+    <meta property="og:url" content="http://www.bocholtvv.be"/>
+    <meta property="og:description" content="Koninklijke Bocholter VV is een Belgische voetbalclub uit Bocholt in Limburg. De club is aangesloten bij de KBVB met stamnummer 595." />
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/uploads/img/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/uploads/img/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/uploads/img/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/uploads/img/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/uploads/img/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/uploads/img/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/uploads/img/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/uploads/img/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/uploads/img/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/uploads/img/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/uploads/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/uploads/img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/uploads/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/uploads/img/favicon/manifest.json">
+
+    <!-- Stylesheets -->
+    <link href="/assets/css/bundle.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link href="/assets/css/custom.css" rel="stylesheet">
+
+</head>
+<body>
+{% block bodyhead %}{% endblock %}
+<div class="header">
+    <div>
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon icon--close"></span>
+                    </button>
+                    <div class="header__logo">
+                    </div>
+                </div>
+                <div class="header__menu">
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        {% block menu %}
+                            {{ render(controller('CMSContentBundle:Menu:parentItems', { 'id': 1, 'menuKey': menuKey })) }}
+                        {% endblock %}
+                    </div>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+    </div>
+</div>
+
+{% block main %}{% endblock %}
+<div class="footer">
+    <div class="footer__partners">
+        <div class="container">
+            <div class="footer__partners-subtitle">Sponsors</div>
+            {% block social %}
+                <div class="footer__social-media">
+                    <a class="facebook" target="_blank" href="https://www.facebook.com/Bocholter-Voetbalvereniging-55835881388/?fref=ts"><i class="icon icon--fb-icon"></i></a>
+                    <a class="twitter" target="_blank" href="https://twitter.com/bocholtervv"><i class="icon icon--tw-icon"></i></a>
+                </div>
+            {% endblock %}
+            <div class="row">
+                <div class="col-md-2 col-xs-3"><a target="_blank" href="http://www.martens.be/"><img class="full-width partner-logo" src="/uploads/img/Martens_web.jpg"></a></div>
+                <div class="col-md-2 col-xs-3"><a target="_blank" href="http://www.bouwbedrijf-driesen.be/index.html"><img class="full-width partner-logo" src="/uploads/img/driesen.jpg"></a></div>
+                <div class="col-md-2 col-xs-3"><a target="_blank" href="http://marcbaeten.be/"><img class="full-width partner-logo" src="/uploads/img/marcBaeten.jpg"></a></div>
+                <div class="col-md-2 col-xs-3"><a target="_blank" href="http://deprijzenklopper.be/"><img class="full-width partner-logo" src="/uploads/img/prijzenklopper.jpg"></a></div>
+                <div class="col-md-2 col-xs-3"><a target="_blank" href="http://www.kookkunstenaars.be/"><img class="full-width partner-logo" src="/uploads/img/s_en_b.jpg"></a></div>
+                <div class="col-md-2 col-xs-3"><a target="_blank" href="http://hc-trans.be/"><img class="full-width partner-logo" src="/uploads/img/hc-containers.jpg"></a></div>
+                <div class="col-md-2 col-xs-3"><a target="_blank" href="http://eurosportbelgium.be/"><img class="full-width partner-logo" src="/uploads/img/eurosport.jpg"></a></div>
+                <div class="col-md-2 col-xs-3"><a target="_blank" href="http://ashfordfarm.net/"><img class="full-width partner-logo" src="/uploads/img/ashford.jpg"></a></div>
+                <div class="col-md-2 col-xs-3"><a target="_blank" href="http://euro-trucks.be/"><img class="full-width partner-logo" src="/uploads/img/euro-trucks.jpg"></a></div>
+                <div class="col-md-2 col-xs-3"><a target="_blank" href="http://www.tsboekhouders.be/"><img class="full-width partner-logo" src="/uploads/img/tsb.jpg"></a></div>
+                <div class="col-md-2 col-xs-3"><a target="_blank" href="http://jacobs-logistics.be/"><img class="full-width partner-logo" src="/uploads/img/jacobsLogistics.jpg"></a></div>
+                <div class="col-md-2 col-xs-3"><a target="_blank" href="http://sleurs-en-vangompel.be/"><img class="full-width partner-logo" src="/uploads/img/logo_slvg.jpg"></a></div>
+                <div class="col-md-2 col-xs-3"><a target="_blank" href="https://winkels.carrefour.eu/nl/s/carrefour/carrefour-market-bocholt/1712"><img class="full-width partner-logo" src="/uploads/img/Carrefour.png"></a></div>
+                <div class="col-md-2 col-xs-3"><a target="_blank" href="http://www.kleen.be/"><img class="full-width partner-logo" src="/uploads/img/kleen.png"></a></div>
+            </div>
+        </div>
+    </div>
+    <div class="footer__bottom">
+        <div class="container">
+            <div class="pull-left">
+                &copy; Copyright 2016 | Bocholt VV. All rights reserved
+            </div>
+            <div class="pull-right">
+                Design & Development by <span class="bold"><a class="link" href="http://www.panenco.com" target="_blank">Panenco</a></span>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function myFunction() {
+        document.getElementsByClassName("topnav")[0].classList.toggle("responsive");
+    }
+</script>
+<script type="text/javascript" src="/assets/js/dependencies.js"></script>
+<script type="text/javascript" src="/assets/js/bundle.min.js"></script>
+
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+
+{% include "CmfCreateBundle::includecssfiles.html.twig" %}
+{{ render(controller("cmf_create.jsloader.controller:includeJSFilesAction")) }}
+
+</body>
+</html>

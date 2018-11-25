@@ -1,0 +1,24 @@
+{% for item in content %}
+    <div class="news__item">
+        <div class="news__item-image-holder">
+            <a class="normal" href="{{ path('cms_content_homepage_param', {'id': menuKey.getAliasForLocale(app.request.locale), 'param': item.contentAlias, '_locale': app.request.locale}) }}" class="read-more">
+                <img class="news__item-image" src="{% if item.contentImage %}{{ item.contentImage }}{% else %}/uploads/img/soccer_news_item.png{% endif %}">
+            </a>
+        </div>
+        <div class="news__item-title">
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('delete_content_item', {'itemid': item.id, 'menuKeyid': menuKey.getAliasForLocale(app.request.locale), 'language': app.request.locale }) }}"><i class="fa fa-trash"></i></a>
+            {% endif %}
+            <a class="normal" href="{{ path('cms_content_homepage_param', {'id': menuKey.getAliasForLocale(app.request.locale), 'param': item.contentAlias, '_locale': app.request.locale}) }}" class="read-more">
+                {{ item.contentTitle }}
+            </a>
+        </div>
+        <div class="news__item-intro">
+            {{ item.getShortContent() | striptags | raw }}
+        </div>
+        <div class="news__item-credentials">
+            <div class="news__item-date">{{ item.created|date('d-m-Y') }}</div>
+            <div class="news__item-read-more"><a href="{{ path('cms_content_homepage_param', {'id': menuKey.getAliasForLocale(app.request.locale), 'param': item.contentAlias, '_locale': app.request.locale}) }}" class="read-more">lees meer</a></div>
+        </div>
+    </div>
+{% endfor %}

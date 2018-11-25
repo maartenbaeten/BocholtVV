@@ -1,0 +1,20 @@
+<div class="ranking__title">{{ member.firstName }} {{ member.lastName }}</div>
+<div class="row m-t-30">
+    {% if member.playerImage %}
+        <div class="col-md-4">
+            <img class="team__member-image" src="/{{ member.getWebPath() }}">
+        </div>
+    {% endif %}
+    <div class="col-md-7">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="team-detail">
+                    <p><b>Nationaliteit:</b> {{ member.nationality }}</p>
+                    {% if not member.role.staff %}<p><b>Team-nummer:</b> {{ member.teamNumber }}</p>{% endif %}
+                    <p><b>Geboortedatum:</b> {{ member.birthDate|date('d-m-Y') }}</p>
+                    {% if not member.role.staff %}<p><b>Positie:</b> {{ member.role.singularRoleName }}</p>{% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

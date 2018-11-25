@@ -1,0 +1,11 @@
+<div class="section section--menu-seperator"></div>
+<div class="section section--ranking section--ranking--fixed">
+    <div class="container">
+        <div class="calendar-holder">
+            <div class="ranking__title">Kalender A-Kern</div>
+        </div>
+        <div class="calendar__items">
+            {{ render(controller('CMSTeamBundle:Team:teamCalendar', { 'teamId': 1, 'template': 'CMSTeamBundle:Frontend:calendar-element.html.twig' })) }}
+        </div>
+    </div>
+</div>

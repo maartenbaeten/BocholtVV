@@ -1,0 +1,23 @@
+{% for item in content %}
+	{% if app.user %}
+	<div class="blockhover">
+		<div class="deleterow">
+			<a href="{{ path('delete_contentposition', {'id': item.id, 'language': app.request.locale, 'position': position, 'menuKeyid': menuKey.id }) }}"><img src="/bundles/images/delete_icon.png" class="inlineblock" width="16px" /></a>
+			<a href="{{ path('increase_ordering', {'id': item.id, 'language': app.request.locale, 'position': position, 'menuKeyid': menuKey.id }) }}"><img src="/bundles/images/up_icon.png" class="inlineblock" style='margin-left:15px;' width="10px" /></a>
+			<a href="{{ path('decrease_ordering', {'id': item.id, 'language': app.request.locale, 'position': position, 'menuKeyid': menuKey.id }) }}"><img src="/bundles/images/down_icon.png" class="inlineblock" style='margin-left:3px;' width="10px" /></a>
+			{% if item.contentKey.contentType.id == 5 %}
+			<a href='' data-toggle="modal" data-target=".menumodal"><img src="/bundles/images/add_icon.png" class="inlineblock" style='margin-left:8px;' width="16px" /></a>
+			{{ render(controller('CMSContentBundle:Menu:addform', {'menuid': 1, 'parentkey': menuKey})) }}
+			{% endif %}
+			{% if item.contentKey.contentType.id == 6 %}
+				<a data-toggle="modal" href="{{ path('seemodal', {'categoryid': item.content}) }}" data-target="#myModal"><img src="/bundles/images/add_icon.png" class="inlineblock" style='margin-left:8px;' width="16px" /></a>
+			{% endif %}
+		</div>
+		{{ include(item.contentKey.contentType.viewLink, {'item': item, 'menuKey': menuKey} ) }}
+	</div>
+	{% else %}
+		{{ include(item.contentKey.contentType.viewLink, {'item': item, 'menuKey': menuKey} ) }}
+	{% endif %}
+{% endfor %}
+
+{% include 'CMSContentBundle:Content:DynamicModal.html.twig' %}

@@ -1,0 +1,30 @@
+<div class="section section--club">
+    <div class="homepage-logo">
+        <a href="http://www.bocholtvv.be"><img src="/uploads/img/BVV_logo_white.png"></a>
+    </div>
+    <div class="tabber">
+        <div class="tabber__pickers">
+            <div class="tabber__pickers-title">{{ category.description }}</div>
+            {% for item in content %}
+                <div class="tabber__pickers-tab {% if loop.index == 1 %}tabber__pickers-tab--active{% endif %}" data-target="{{ item.contentAlias|lower }}">
+                    <div class="tabber__pickers-icon">
+                        <i class="icon icon--ball"></i>
+                    </div>
+                    {{ item.contentTitle }}
+                </div>
+            {% endfor %}
+        </div>
+        <div class="tabber__content">
+            {% for item in content %}
+                <div class="tabber_text-holder {% if loop.index > 1 %}hidden{% endif %}" id="{{ item.contentAlias|lower }}">
+                    {% createphp item as="rdf" noautotag %}
+                    <div {{ createphp_attributes(rdf) }}>
+                        <div class="tabber__content-title" {{ createphp_attributes( rdf.contentTitle ) }}>{{ createphp_content( rdf.contentTitle ) }}</div>
+                        <div class="tabber__content-text" {{ createphp_attributes( rdf.content ) }}>{{ createphp_content( rdf.content ) }}</div>
+                    </div>
+                    {% endcreatephp %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

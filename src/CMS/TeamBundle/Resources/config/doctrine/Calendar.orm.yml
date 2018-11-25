@@ -1,0 +1,62 @@
+CMS\TeamBundle\Entity\Calendar:
+    type: entity
+    table: calendar
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        created:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        creator:
+            type: string
+            scale: 0
+            length: 200
+            unique: false
+            nullable: true
+            precision: 0
+        date:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        score:
+            type: string
+            length: null
+            unique: false
+            nullable: true
+        home:
+            type: boolean
+            nullable: false
+        challengerImage:
+            type: string
+            unique: false
+            nullable: true
+        challengerName:
+            type: string
+            nullable: false
+    lifecycleCallbacks:
+            prePersist: [ preUpload ]
+            preUpdate: [ preUpload ]
+            postPersist: [ upload ]
+            postUpdate: [ upload ]
+            postRemove: [ removeUpload ]
+    manyToOne:
+        team:
+            targetEntity: CMS\TeamBundle\Entity\Team
+            inversedBy: members
+    lifecycleCallbacks: {  }

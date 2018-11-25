@@ -1,0 +1,27 @@
+{% for item in content %}
+    {% createphp item as="rdf" noautotag %}
+    <div {{ createphp_attributes(rdf) }}>
+    <div class="col-md-4">
+        <div class="image-box mb-20">
+            <div class="overlay-container">
+                {% if is_granted('ROLE_ADMIN') %}
+                    <form action="{{ oneup_uploader_endpoint('gallery') }}" style='background:url("{{ item.contentimage }}"); background-repeat: no-repeat; background-size: 100% 100%;' class="dropzone imagezone">
+                        <input type="hidden" name="itemid" value="{{ item.id }}" />
+                        <div class="dz-message" data-dz-message>
+                            <span>
+                                <a class="overlay small">
+                                    <i class="fa fa-plus"></i>
+                                </a>
+                            </span>
+                        </div>
+                    </form>
+                {% else %}
+                    <img src="{{ item.contentimage }}" alt="" style="width: 100%">
+                {% endif %}
+            </div>
+            <div class="btn btn-light-gray small-btnmin btn-block normalcursor"><span {{ createphp_attributes( rdf.contentTitle ) }}>{{ createphp_content( rdf.contentTitle ) }}</span> {% if is_granted('ROLE_ADMIN') %}<a href="{{ path('delete_content_item', {'itemid': item.id, 'language': app.request.locale, 'menuKeyid': menuKey.id }) }}" class="confirm"><img src="/bundles/images/delete_icon.png" style="margin-left: 7px; vertical-align: middle; margin-bottom: 3px" class="inlineblock" width="12px" /></a>{% endif %}</div>
+        </div>
+    </div>
+    </div>
+    {% endcreatephp %}
+{% endfor %}

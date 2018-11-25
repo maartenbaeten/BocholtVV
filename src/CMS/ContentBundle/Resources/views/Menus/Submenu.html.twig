@@ -1,0 +1,10 @@
+{% createphp item as="rdf" noautotag %}
+<div class="widget widget_categories">
+    <div {{ createphp_attributes(rdf) }}>
+        <h3 class="widget_title">{% if menuKey.parentItem %}{{ menuKey.parentItem.menuItems[0].title }}{% else %}{{ menuKey.menuItems[0].title }}{% endif %}</h3>
+    </div>
+    <ul class="submenu">
+        {{ render(controller('CMSContentBundle:Menu:children', { 'id': 1, 'menuKey': menuKey, 'deleterow': 1 })) }}
+    </ul>
+</div>
+{% endcreatephp %}

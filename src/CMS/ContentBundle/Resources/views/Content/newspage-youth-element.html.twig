@@ -1,0 +1,15 @@
+{% for item in content %}
+    {% createphp item as="rdf" noautotag %}
+    <div {{ createphp_attributes(rdf) }}>
+        <div class="margin-bottom-15">
+            <div class="news__item-title">
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a style="float: left;margin-right: 10px;" href="{{ path('delete_content_item', {'itemid': item.id, 'menuKeyid': menuKey.getAliasForLocale(app.request.locale), 'language': app.request.locale }) }}"><i class="fa fa-trash"></i></a>
+                {% endif %}
+                <div {{ createphp_attributes( rdf.contentTitle ) }}>{{ createphp_content( rdf.contentTitle ) }}</div>
+            </div>
+            <div class="news__item-intro" {{ createphp_attributes( rdf.content ) }}>{{ createphp_content( rdf.content ) | raw }}</div>
+        </div>
+    </div>
+    {% endcreatephp %}
+{% endfor %}

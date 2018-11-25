@@ -1,0 +1,47 @@
+{% extends "CMSTemplateBundle:Bocholtvv:index.html.twig" %}
+{% block bodyid %}sub-page{% endblock %}
+{% set menuKey = menuKey %}
+{% set menuitem = menuitem %}
+{% block main %}
+    <div id="main-blog" style="padding-bottom: 30px;">
+        <div class="container">
+            {% if is_granted('ROLE_ADMIN') %}
+                <div class="row hidden-xs hidden-sm padding-top-20">
+                    <div id="content" class="site-content col-md-12">
+                        {% include 'CMSContentBundle:Content:addcontent.html.twig' with {'position' : 1, 'menuKey': menuKey} %}
+                    </div>
+                </div>
+            {% endif %}
+            <div class="row padding-top-20">
+                <div id="content" class="site-content col-md-12">
+                    {% if app.request.get("subscription") %}
+                        <div class="alert alert-success" role="alert">
+                            <strong>Gelukt! </strong> Je werd succesvol ingeschreven voor onze nieuwsbrief.
+                        </div>
+                    {% endif %}
+                    {{ render(controller('CMSContentBundle:Content:items', { 'menuKey': menuKey, 'position': 1, 'locale': locale, 'originalRequest' : app.request })) }}
+                </div>
+                <!-- main end -->
+            </div>
+        </div>
+    </div>
+    <!-- footer -->
+    <footer id="footer">
+        <!-- footer-bottom -->
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 hidden-xs">
+                        {{ render(controller('CMSContentBundle:Menu:onlyParents', { 'id': 1, 'menuKey': menuKey })) }}
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="copy-right text-right">
+                            <p>&copy; Design by <a href="http://www.panenco.com" target="_blank">Panenco</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- footer-bottom -->
+    </footer><!--/#footer-->
+{% endblock %}

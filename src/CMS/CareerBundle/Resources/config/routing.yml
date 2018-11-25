@@ -1,0 +1,7 @@
+cms_career_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: CMSCareerBundle:Default:index }
+
+uploadform_wide:
+    pattern:  /Upload/resume/{language}/{menuKeyid}/{contentid}
+    defaults: { _controller: CMSCareerBundle:Resume:submitwideform }

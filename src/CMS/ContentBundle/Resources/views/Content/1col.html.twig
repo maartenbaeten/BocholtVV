@@ -1,0 +1,6 @@
+{% extends "CMSTemplateBundle:Bocholtvv:index.html.twig" %}
+{% set menuKey = menuKey %}
+{% set menuitem = menuitem %}
+{% block main %}
+    {{ render(controller('CMSContentBundle:Content:items', { 'menuKey': menuKey, 'position': 1, 'locale': locale, 'originalRequest' : app.request })) }}
+{% endblock %}

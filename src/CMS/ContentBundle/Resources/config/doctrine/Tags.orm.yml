@@ -1,0 +1,32 @@
+CMS\ContentBundle\Entity\Tags:
+    type: entity
+    table: CMS_content_tags
+    repositoryClass: CMS\ContentBundle\Entity\TagsRepository
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        tagName:
+            type: text
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+    manyToMany:
+        contentItems:
+            targetEntity: CMS\ContentBundle\Entity\ContentKey
+            cascade: {  }
+            mappedBy: tags
+            inversedBy: null
+            joinTable: {  }
+            orderBy: null
+    lifecycleCallbacks: {  }

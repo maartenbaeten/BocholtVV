@@ -1,0 +1,127 @@
+{% extends "@CMSTeam/index.html.twig" %}
+
+{% block customStylesheets %}
+    <link href="{{ asset('assets/css/plugins/dataTables/dataTables.bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/plugins/dataTables/dataTables.responsive.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/plugins/dataTables/dataTables.tableTools.min.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block main %}
+
+    <div class="row wrapper border-bottom white-bg page-heading" style="margin-bottom: 10px;">
+        <div class="col-lg-10">
+            <h2>
+                Team members
+            </h2>
+        </div>
+    </div>
+    {# <form action="{{ path('admin_teammember_import') }}" method="post" enctype="multipart/form-data">
+        <input type="file" name="team">
+        <input type="submit" value="Submit">
+    </form> #}
+    <div class="wrapper wrapper-content-wide animated fadeInRight">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <div class="table-responsive" >
+                            <table id="teamMembersTable" class="table table-striped table-bordered table-hover dataTables-example">
+                                <thead>
+                                <tr>
+                                    <th>First name</th>
+                                    <th>Last name</th>
+                                    <th>Player alias</th>
+                                    {#<th>Number</th>#}
+                                    <th>Team</th>
+                                    <th>Role</th>
+                                    <th>Paid membership</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for member in members %}
+                                    <tr>
+                                        <td>
+                                            {{ member.firstName }}
+                                        </td>
+                                        <td>
+                                            {{ member.lastName }}
+                                        </td>
+                                        <td>
+                                            {{ member.playerAlias }}
+                                        </td>
+                                        {#<td>#}
+                                            {#{{ member.number }}#}
+                                        {#</td>#}
+                                        <td>
+                                            {{ member.team.teamName }}
+                                        </td>
+                                        <td>
+                                            {% if member.role.roleName is defined %}
+                                                {{ member.role.roleName }}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if member.membershipPaid %}
+                                                <span class="glyphicon glyphicon-ok"></span>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <a href="{{ path('admin_teammember_show', {'id' : member.id}) }}">
+                                                <span class="fa fa-user" data-toggle="tooltip" data-placement="top" title="Team member details"></span>
+                                            </a>&nbsp;
+                                            <a href="{{ path('admin_teammember_update', {'id' : member.id}) }}">
+                                                <span class="glyphicon glyphicon-edit" data-toggle="tooltip" data-placement="top" title="Edit team member"></span>
+                                            </a>&nbsp;
+                                            <a href="{{ path('admin_teammember_delete', {'id' : member.id}) }}" class="deleteTeamMember">
+                                                <span class="glyphicon glyphicon-remove" data-toggle="tooltip" data-placement="top" title="Delete team member"></span>
+                                            </a>&nbsp;
+                                            <a href="{{ path('admin_teammember_delete_image', {'id' : member.id}) }}" class="deleteTeamMemberImage">
+                                                del img
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block customJavascripts %}
+    <script src="{{ asset('assets/js/plugins/dataTables/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/dataTables/dataTables.bootstrap.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/dataTables/dataTables.responsive.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/dataTables/dataTables.tableTools.min.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+
+            $('#teamMembersTable').DataTable();
+
+            $('.deleteTeamMember').on('click', function() {
+                var result = confirm('Are you sure you want to delete this team member?');
+                if(result) {
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+
+            $('.deleteTeamMemberImage').on('click', function() {
+                var result = confirm('Are you sure you want to delete image of this  team member?');
+                if(result) {
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+        } );
+    </script>
+{% endblock %}

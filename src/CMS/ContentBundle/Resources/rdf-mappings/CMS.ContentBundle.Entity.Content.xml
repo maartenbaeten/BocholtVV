@@ -1,0 +1,10 @@
+<!-- Resources/rdf-mappings/Symfony.CMS.ContentBundle.Content.xml -->
+<type
+        xmlns:schema="http://schema.org/"
+        typeof="schema:WebPage"
+        >
+    <children>
+        <property property="schema:headline" identifier="contentTitle"/>
+        <property property="schema:text" identifier="content" />
+    </children>
+</type>

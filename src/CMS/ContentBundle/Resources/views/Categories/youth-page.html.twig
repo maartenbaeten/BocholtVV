@@ -1,0 +1,20 @@
+{% if originalRequest.get('team') %}
+    {{ render(controller('CMSTeamBundle:Team:getTeam', { 'alias': originalRequest.get('team'), 'template': 'CMSTeamBundle:Frontend:team-detail.html.twig', 'originalRequest': originalRequest})) }}
+{% else %}
+    <div class="section section--menu-seperator"></div>
+    <div class="section section--news">
+        <div class="container">
+            <div class="news news--youthpage">
+                <div class="news__title">
+                    Bocholt VV Jeugd
+                </div>
+                <div class="news__items">
+                    {{ render(controller('CMSContentBundle:Content:category', { 'id': item.content, 'menuKey': menuKey, 'template': 'CMSContentBundle:Content:newspage-youth-element.html.twig', 'offset': 3 })) }}
+                </div>
+            </div>
+            <div class="youth-facebook hidden-xs hidden-sm">
+                <div class="fb-page" data-href="https://www.facebook.com/bocholtvvjeugd/" data-tabs="timeline" data-height="581" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/bocholtvvjeugd/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/bocholtvvjeugd/">Bocholt VV jeugd</a></blockquote></div>
+            </div>
+        </div>
+    </div>
+{% endif %}

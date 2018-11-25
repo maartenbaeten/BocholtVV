@@ -1,0 +1,60 @@
+<div class="section section--club">
+    <div class="homepage-logo">
+        <a href="http://www.bocholtvv.be"><img src="/uploads/img/BVV_logo_white.png"></a>
+    </div>
+    <div class="tabber">
+        <div class="tabber__pickers">
+            <div class="tabber__pickers-title">{{ team.teamName }}</div>
+            <div class="tabber__pickers-tab tabber__pickers-tab--active" data-target="nieuws">
+                <div class="tabber__pickers-icon">
+                    <i class="icon icon--ball"></i>
+                </div>
+                Nieuws
+            </div>
+            {% if team.teamCode %}
+                <div class="tabber__pickers-tab" data-target="klassement">
+                    <div class="tabber__pickers-icon">
+                        <i class="icon icon--ball"></i>
+                    </div>
+                    Klassement
+                </div>
+                <div class="tabber__pickers-tab" data-target="kalender">
+                    <div class="tabber__pickers-icon">
+                        <i class="icon icon--ball"></i>
+                    </div>
+                    Kalender
+                </div>
+            {% endif %}
+            <div class="tabber__pickers-tab" data-target="spelers">
+                <div class="tabber__pickers-icon">
+                    <i class="icon icon--ball"></i>
+                </div>
+                Spelers
+            </div>
+        </div>
+        <div class="tabber__content">
+            <div class="tabber_text-holder" id="nieuws">
+                <div class="tabber__content-title tabber__content-title--inline">Nieuws</div>
+                {{ render(controller('CMSTeamBundle:News:listByTeamFrontend', { 'id': team.id, 'template': 'CMSTeamBundle:Frontend:team-news.html.twig', 'originalRequest': originalRequest })) }}
+            </div>
+            {% if team.teamCode %}
+                <div class="tabber_text-holder hidden" id="klassement">
+                    <div class="tabber__content-title tabber__content-title--inline">Klassement</div>
+                    <div class="tabber__content-text">
+                        {{ render(controller('CMSTeamBundle:Team:youthClassification', { 'teamId': team.id })) }}
+                    </div>
+                </div>
+                <div class="tabber_text-holder hidden" id="kalender">
+                    <div class="tabber__content-title tabber__content-title--inline">Kalender</div>
+                    <div class="tabber__content-text">
+                        {{ render(controller('CMSTeamBundle:Team:youthCalendar', { 'teamId': team.id })) }}
+                    </div>
+                </div>
+            {% endif %}
+            <div class="tabber_text-holder hidden" id="spelers">
+                {{ render(controller('CMSTeamBundle:Team:listAllFrontendYouth', { 'teamId': team.id })) }}
+                {{ render(controller('CMSTeamBundle:Team:listAllFrontendYouth', { 'teamId': team.id, 'staff': 1 })) }}
+            </div>
+        </div>
+    </div>
+</div>

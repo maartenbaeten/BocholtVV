@@ -1,0 +1,23 @@
+{% if is_granted('ROLE_ADMIN') %}
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/dropzone.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/dropzone.js"></script>
+{% endif %}
+{% for item in content %}
+	{% if is_granted('ROLE_ADMIN') %}
+	<div class="blockhover">
+		<div class="deleterow hidden-xs">
+            {% if item.contentKey.contentType.classification == 3 %}
+				<a href="{{ path('add_content_item', {'categoryid': item.content, 'menuKeyid': menuKey.id , 'typeid': 1, 'language': app.request.locale}) }}"><i class="fa fa-plus"></i></a>
+			{% endif %}
+            {% if item.contentKey.contentType.classification == 3 %}
+                <a data-toggle="modal" href="{{ path('edit_category', {'menuKeyid': menuKey.id, 'language': app.request.locale, 'categoryid': item.content }) }}" data-target="#myModal"><i class="fa fa-cog"></i></a>
+            {% endif %}
+		</div>
+		{{ include(item.contentKey.contentType.viewLink, {'item': item, 'menuKey': menuKey} ) }}
+	</div>
+	{% else %}
+		{{ include(item.contentKey.contentType.viewLink, {'item': item, 'menuKey': menuKey} ) }}
+	{% endif %}
+{% endfor %}
+
+{% include 'CMSContentBundle:Content:DynamicModal.html.twig' %}

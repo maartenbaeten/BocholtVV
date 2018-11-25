@@ -1,0 +1,7 @@
+<ul class="footer-menu list-inline">
+    {% for key in items %}
+        <li>
+            <a href="{{ path('cms_content_homepage',{'id': key.menuItems[0].alias, '_locale': app.request.locale}) }}">{{ key.menuItems[0].title }}</a>
+        </li>
+    {% endfor %}
+</ul>

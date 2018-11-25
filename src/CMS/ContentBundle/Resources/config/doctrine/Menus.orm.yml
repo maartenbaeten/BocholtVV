@@ -1,0 +1,39 @@
+CMS\ContentBundle\Entity\Menus:
+    type: entity
+    table: CMS_menu
+    repositoryClass: CMS\ContentBundle\Entity\MenusRepository
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        title:
+            type: string
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        description:
+            type: text
+            scale: 0
+            length: 500
+            unique: false
+            nullable: false
+            precision: 0
+    oneToMany:
+        items:
+            targetEntity: CMS\ContentBundle\Entity\MenuItems
+            cascade: {  }
+            mappedBy: menu
+            inversedBy: null
+            orphanRemoval: false
+            orderBy: null
+    lifecycleCallbacks: {  }

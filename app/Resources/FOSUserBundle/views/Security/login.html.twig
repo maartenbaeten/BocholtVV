@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!--title-->
+    <title>{% if title is not defined %}{% set title = 'Panenco CMS' %}{% endif %}{{ title }}</title>
+
+    <!--CSS-->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/assets/css/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/css/owl.transitions.css" rel="stylesheet">
+    <link href="/assets/css/prettyPhoto.css" rel="stylesheet">
+    <link href="/assets/css/main.css" rel="stylesheet">
+    <link href="/assets/css/custom.css" rel="stylesheet">
+    <link id="css-preset" href="/assets/css/presets/preset2.css" rel="stylesheet">
+    <link href="/assets/css/responsive.css" rel="stylesheet">
+
+    <!--Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,500,700,800,100,600' rel='stylesheet' type='text/css'>
+
+    <!--[if lt IE 9]>
+    <script src="/assets/js/html5shiv.js"></script>
+    <script src="/assets/js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="/assets/images/ico/favicon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/assets/images/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/font-awesome.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}" />
+</head><!--/head-->
+<body id="{% block bodyid %}{% endblock %}" class="gray-bg">
+<header id="navigation">
+    {#<div class="socialrow correctedsocialrow hidden-xs hidden-sm">#}
+        {#<div class="{% if app.request.get('_locale') == 'nl' %}activelanguagelink{% endif %} socialicon"><a href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({'_locale': 'nl'}|merge(app.request.query.all))) }}">NL</a>#}
+        {#</div><div class="{% if app.request.get('_locale') == 'en' %}activelanguagelink{% endif %} socialicon"><a href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({'_locale': 'en'}|merge(app.request.query.all))) }}">EN</a>#}
+        {#</div><div class="{% if app.request.get('_locale') == 'fr' %}activelanguagelink{% endif %} socialicon last"><a href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({'_locale': 'fr'}|merge(app.request.query.all))) }}">FR</a>#}
+        {#</div>#}
+    {#</div>#}
+    {#<div class="navbar navbar-static-top" role="banner">#}
+        {#<div class="container width100">#}
+            {#<div class="row header-section">#}
+                {#<div class="col-sm-3">#}
+                    {#<div class="navbar-header">#}
+                        {#<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">#}
+                            {#<span class="sr-only">Toggle navigation</span>#}
+                            {#<span class="icon-bar"></span>#}
+                            {#<span class="icon-bar"></span>#}
+                            {#<span class="icon-bar"></span>#}
+                        {#</button>#}
+                        {#<a class="navbar-brand" href="{{ path('cms_content_homepage') }}">#}
+                            {#<h1><img class="img-responsive homepagelogo" src="/assets/images/Logo.png" alt="logo"></h1>#}
+                        {#</a>#}
+                    {#</div>#}
+                {#</div>#}
+                {#<div class="col-sm-9">#}
+                    {#<nav class="collapse navbar-collapse navbar-right">#}
+                        {#<ul class="nav navbar-nav navbar-right">#}
+                            {#<li>#}
+                                {#<a data-toggle="modal" href="{{ path('cms_popup',{'id': 7, '_locale': app.request.locale}) }}" data-target="#myModal">Contact</a>#}
+                            {#</li>#}
+                        {#</ul>#}
+                       {#&#123;&#35;{{ render(controller('CMSContentBundle:Menu:parentItems', { 'id': 1, 'menuKey': menuKey })) }}&#35;&#125;#}
+                    {#</nav>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+    {#</div>#}
+    <div class="sticky-wrapper" style="height: 100px;"><div class="menu navbar navbar-static-top header-logo-left-menu-right text-none oxy-mega-menu navbar-sticky navbar-stuck" id="masthead">
+            <div class="container">
+                {#<div class="navbar-header">#}
+                    {#<button class="navbar-toggle collapsed" data-target=".main-navbar" data-toggle="collapse" type="button"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>#}
+                    {#<a class="navbar-brand" href="/"> <img src="http://panenco.com/assets/images/Panenco_Logo.png" alt="Panenco"> </a> <p style="color:white;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PANENCO</p>#}
+                {#</div>#}
+                <div class="nav-container">
+                    {#<nav class="collapse navbar-collapse main-navbar logo-navbar navbar-right">#}
+                    {#<div class="menu-container">#}
+                    {#<ul class="nav navbar-nav" id="menu-main">#}
+                    {#<li class="menu-item  active">#}
+                    {#<a href="/home">Home </a>#}
+                    {#</li>#}
+                    {#<li class="menu-item  ">#}
+                    {#<a href="/blog">Blog </a>#}
+                    {#</li>#}
+                    {#</ul>#}
+                    {#<ul class="nav navbar-nav" id="menu-main">#}
+                    {#<li class="menu-item">#}
+                    {#<a href="/#contact">Contact</a>#}
+                    {#</li>#}
+                    {#</ul>#}
+                    {#</div>#}
+                    {#</nav>#}
+                </div>
+            </div>
+        </div></div>
+</header><!--/#navigation-->
+
+    {% block fos_user_content %}
+        {#{% if error %}#}
+            {#<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>#}
+        {#{% endif %}#}
+
+        <div class="widget padding8">
+            <div class="row">
+                <div class="col-md-12">
+                    {% if app.user %}
+                        <h2>Logout</h2>
+                        <div class="row">
+                            <div class="col-md-12">
+                                Welkom, {{ app.user.username }}
+                            </div>
+                        </div>
+                        <div class="seperator20"></div>
+                        <form action="{{ path("_logout") }}" method="post" id="logout">
+                            <button type="submit" class="btn btn-fullwidth">Logout</button>
+                        </form>
+                    {% else %}
+                        {#<h2>Login</h2>#}
+                        <div class="row">
+                            <div class="col-md-12">
+                                {#{{ item.content | raw }}#}
+                            </div>
+                        </div>
+                        {% if error is defined %}
+                            {#   <div class="error">{{ error.message }}</div>#}
+                        {% endif %}
+
+                        <div class="middle-box text-center loginscreen animated fadeInDown">
+                            <div>
+                                <div>
+                                    <h1 class="logo-name" style="font-size: 70px;">Bocholt VV</h1>
+                                </div>
+                                <h3>Spelerssysteem</h3>
+                                <form class="m-t" role="form" action="{{ path("fos_user_security_check") }}" method="post"  id="signin-form_id">
+                                    {% if error %}
+                                        <div class="form-group" style="color:darkred;font-size:14px;font-weight: 600">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                    {% endif %}
+                                    <div class="form-group">
+                                        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                                        <input type="text" class="form-control" name="_username" value="{{ last_username }}" required="required"  placeholder="{{ 'security.login'|trans }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" name="_password" required="required" placeholder="{{ 'security.password'|trans }}">
+                                    </div>
+                                    <div class="form-group" style="text-align: left">
+                                        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                                        <label for="remember_me">{{ 'buttons.remember'|trans }}</label>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary block full-width m-b">{{ 'buttons.submit'|trans }}</button>
+
+                                    {#<a href="#"><small>Forgot password?</small></a>#}
+                                    {#<p class="text-muted text-center"><small>Do not have an account?</small></p>#}
+                                    {#<a class="btn btn-sm btn-white btn-block" href="register.html">Create an account</a>#}
+                                </form>
+                             </div>
+                        </div>
+                        {#<form action="{{ path("fos_user_security_check") }}" method="post"  id="signin-form_id" class="panel undercover">#}
+                            {#<h2 class="form-header white">{{ 'security.login'|trans }}</h2>#}
+                            {#<div class="form-group">#}
+                                {#<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />#}
+                                {#<input type="text" id="username_id" class="form-control input-lg" name="_username" value="{{ last_username }}" required="required" placeholder="{{ 'security.login'|trans }}"/>#}
+                            {#</div>#}
+                            {#<div class="form-group signin-password">#}
+                                {#<input type="password" id="password_id" class="form-control input-lg" name="_password" required="required" placeholder="{{ 'security.password'|trans }}"/>#}
+                            {#</div>#}
+
+                            {#<input type="checkbox" id="remember_me" name="_remember_me" value="on" />#}
+                            {#<label for="remember_me">{{ 'buttons.remember'|trans }}</label>#}
+                            {#<div class="form-actions">#}
+
+                                {#<input type="submit" name="_submit" value="{{ 'buttons.submit'|trans }}" class="btn btn-primary btn-block btn-warning btn-lg"/>#}
+                            {#</div>#}
+                        {#</form>#}
+                        {#<form action="{{ path('fos_user_security_check') }}" method="post" id="login">
+                            <div class="form-group">
+                                <label class="control-label">Username</label>
+                                <input type="text" class="form-control" id="username" name="_username">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Password</label>
+                                <input type="password" class="form-control"  id="password" name="_password">
+                            </div>
+                            <button type="submit" class="btn btn-fullwidth">Login</button>
+                        </form>#}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+
+
+    {% endblock fos_user_content %}
+
+
+{% if app.request.get('sent') == 1 %}
+    <div class="modal fade" id="sentNewsletterModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="message-success">{{ 'sent_success' | trans }}</div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+<!--/#scripts-->
+<script type="text/javascript" src="/assets/js/jquery.js"></script>
+<script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.inview.min.js"></script>
+<script type="text/javascript" src="/assets/js/owl.carousel.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.countTo.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.parallax.js"></script>
+<script type="text/javascript" src="/assets/js/isotope.pkgd.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.easypiechart.min.js"></script>
+<script type="text/javascript" src="/assets/js/mousescroll.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.prettyPhoto.js"></script>
+<script type="text/javascript" src="/assets/js/main.js"></script>
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+
+{% include "CmfCreateBundle::includecssfiles.html.twig" %}
+{{ render(controller("cmf_create.jsloader.controller:includeJSFilesAction")) }}
+
+<script src="/assets/js/select2.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#e1").select2({
+            width: '100%',
+            maximumSelectionLength: 3,
+            placeholder: '{{ 'contact.selectDreamjob' | trans }}'
+        });
+        $('#sentNewsletterModal').modal('show');
+    });
+</script>
+</body>
+</html>
+
+{% block main %}
+{% block topofpage %}
+    <div class="signin-header"> {#{{ 'security.login.sign_in_intro'|trans }}#}
+    {#    <a class="btn btn-primary" href="/register">{{ 'security.login.sign_up'|trans }}</a>#}
+    </div>
+{% endblock topofpage %}
+{% endblock main %}

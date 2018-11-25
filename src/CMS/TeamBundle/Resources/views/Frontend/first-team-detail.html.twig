@@ -1,0 +1,152 @@
+<div class="section section--club">
+    <div class="homepage-logo">
+        <a href="http://www.bocholtvv.be"><img src="/uploads/img/BVV_logo_white.png"></a>
+    </div>
+    <div class="tabber">
+        <div class="tabber__pickers">
+            <div class="tabber__pickers-title">Seizoen</div>
+            <div class="tabber__pickers-tab tabber__pickers-tab--active" data-target="spelers">
+                <div class="tabber__pickers-icon">
+                    <i class="icon icon--ball"></i>
+                </div>
+                A-Kern
+            </div>
+            <div class="tabber__pickers-tab" data-target="technische-staf">
+                <div class="tabber__pickers-icon">
+                    <i class="icon icon--ball"></i>
+                </div>
+                Technische Staf
+            </div>
+            <div class="tabber__pickers-tab" data-target="kalender">
+                <div class="tabber__pickers-icon">
+                    <i class="icon icon--ball"></i>
+                </div>
+                Wedstrijden
+            </div>
+            <div class="tabber__pickers-tab" data-target="klassement">
+                <div class="tabber__pickers-icon">
+                    <i class="icon icon--ball"></i>
+                </div>
+                Rangschikking
+            </div>
+            <!--<div class="tabber__pickers-tab" data-target="nieuws">
+                <div class="tabber__pickers-icon">
+                    <i class="icon icon--ball"></i>
+                </div>
+                Transfernieuws
+            </div>-->
+            <div class="tabber__pickers-tab" data-target="dames">
+                <div class="tabber__pickers-icon">
+                    <i class="icon icon--ball"></i>
+                </div>
+                Dames
+            </div>
+            <div class="tabber__pickers-tab" data-target="rangschikking-dames">
+                <div class="tabber__pickers-icon">
+                    <i class="icon icon--ball"></i>
+                </div>
+                Rangschikking Dames
+            </div>
+            <div class="tabber__pickers-tab" data-target="calendar-dames">
+                <div class="tabber__pickers-icon">
+                    <i class="icon icon--ball"></i>
+                </div>
+                Kalender Dames
+            </div>
+        </div>
+        <div class="tabber__content">
+            <!--<div class="tabber_text-holder hidden" id="nieuws">
+                <div class="tabber__content-title tabber__content-title--inline">Transfernieuws</div>
+                {{ render(controller('CMSTeamBundle:News:listByTeamFrontend', { 'id': team.id, 'template': 'CMSTeamBundle:Frontend:team-news.html.twig', 'originalRequest': originalRequest })) }}
+            </div>-->
+            <div class="tabber_text-holder hidden" id="klassement">
+                <div class="tabber__content-title tabber__content-title--inline">Klassement</div>
+                <div class="tabber__content-text">
+                    <table class="table" cellspacing="0">
+                        <thead class=table-haeding>
+                        <td class="table__cell--center">POS</td>
+                        <td>TEAM</td>
+                        <td class="hidden-xs">M</td>
+                        <td class="hidden-xs">W</td>
+                        <td class="hidden-xs">G</td>
+                        <td class="hidden-xs">V</td>
+                        <td class="hidden-xs">F</td>
+                        <td class="hidden-xs">A</td>
+                        <td class="hidden-xs">GD</td>
+                        <td>PTN</td>
+                        </thead>
+                        <tbody>
+                        {{ render(controller('CMSTeamBundle:Team:classification', { 'teamId': team.id })) }}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tabber_text-holder hidden" id="kalender">
+                <div class="tabber__content-title tabber__content-title--inline">Kalender</div>
+                <div class="tabber__content-text">
+                    <table class="table" cellspacing="0">
+                        <thead class="table-haeding table-haeding--yellow">
+                            <td>Datum</td>
+                            <td>Thuis</td>
+                            <td>Uit</td>
+                            <td>Score</td>
+                        </thead>
+                        <tbody>
+                        {{ render(controller('CMSTeamBundle:Team:teamCalendar', { 'teamId': team.id, 'template': 'CMSTeamBundle:Frontend:calendar-table-element.html.twig' })) }}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tabber_text-holder" id="spelers">
+                <div class="tabber__content-title tabber__content-title--inline">A-Kern</div>
+                {{ render(controller('CMSTeamBundle:Team:listAllFrontend', { 'teamId': team.id })) }}
+            </div>
+            <div class="tabber_text-holder hidden" id="technische-staf">
+                <div class="tabber__content-title tabber__content-title--inline">Technische Staf</div>
+                {{ render(controller('CMSTeamBundle:Team:listAllFrontend', { 'teamId': team.id, 'staff': 1 })) }}
+            </div>
+            <div class="tabber_text-holder hidden" id="rangschikking-dames">
+                <div class="tabber__content-title tabber__content-title--inline">Klassement</div>
+                <div class="tabber__content-text">
+                    <table class="table" cellspacing="0">
+                        <thead class=table-haeding>
+                        <td class="table__cell--center">POS</td>
+                        <td>TEAM</td>
+                        <td class="hidden-xs">M</td>
+                        <td class="hidden-xs">W</td>
+                        <td class="hidden-xs">G</td>
+                        <td class="hidden-xs">V</td>
+                        <td class="hidden-xs">F</td>
+                        <td class="hidden-xs">A</td>
+                        <td class="hidden-xs">GD</td>
+                        <td>PTN</td>
+                        </thead>
+                        <tbody>
+                        {{ render(controller('CMSTeamBundle:Team:classification', { 'teamId': 21 })) }}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tabber_text-holder hidden" id="dames">
+                <div class="tabber__content-title tabber__content-title--inline">Dames</div>
+                {{ render(controller('CMSTeamBundle:Team:listAllFrontend', { 'teamId': 21 })) }}
+            </div>
+            <div class="tabber_text-holder hidden" id="calendar-dames">
+                <div class="tabber__content-title tabber__content-title--inline">Kalender Dames</div>
+                <div class="tabber__content-text">
+                    <table class="table" cellspacing="0">
+                        <thead class="table-haeding table-haeding--yellow">
+                        <td>Datum</td>
+                        <td>Thuis</td>
+                        <td>Uit</td>
+                        <td>Score</td>
+                        </thead>
+                        <tbody>
+                        {{ render(controller('CMSTeamBundle:Team:teamCalendar', { 'teamId': 21, 'template': 'CMSTeamBundle:Frontend:calendar-table-element.html.twig' })) }}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+{% extends "CMSContentBundle:Default:base.html.twig" %}
+{% form_theme form 'CMSContentBundle:Default:customization.html.twig' %}
+{% block main %}
+
+    <section class="main-container">
+        <div class="container">
+            <div class="row">
+
+                <!-- main start -->
+                <!-- ================ -->
+                <div class="main col-md-12">
+
+                    <!-- page-title start -->
+                    <!-- ================ -->
+                    <h1 class="page-title"></h1>
+                    <div class="separator-2"></div>
+                    <!-- page-title end -->
+                    <br><br><br><br>
+                    <div class="row">
+                        <div class="col-md-4">
+                            {% if param is not defined or param == null %} {% set param = 1 %}{% endif %}
+                            {% include "CMSContentBundle:Install:stages.html.twig" with {'step' : param } %}
+                        </div>
+                        <!-- sidebar start -->
+                        <aside class="sidebar col-md-6">
+                            <div class="side vertical-divider-left">
+                                <div class="block clearfix">
+
+                                </div>
+                            </div>
+                        </aside>
+                        <div class="col-md-3 panel undercover">
+                            {% if all is defined %}
+                            {% endif %}
+                            {{ form_start(form, {'action': path('cms_install', {'param' : param }), 'method': 'POST', 'attr' : {'class' : 'form-inline', 'novalidate': 'novalidate'}}) }}
+                            {{ form_widget(form) }}
+                            {{ form_rest(form) }}
+                            {{ form_end(form) }}
+                        </div>
+                        <!-- sidebar end -->
+                    </div>
+                </div>
+                <!-- main end -->
+            </div>
+        </div>
+    </section>
+
+{% endblock main %}

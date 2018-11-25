@@ -1,0 +1,27 @@
+{% createphp item as="rdf" noautotag %}
+    <div {{ createphp_attributes(rdf) }}>
+        <div class="news__title" {{ createphp_attributes( rdf.contentTitle ) }}>{{ createphp_content( rdf.contentTitle ) }}</div>
+        <div class="news__container ">
+            {% if item.contentImage or is_granted('ROLE_ADMIN') %}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <div class="news__image">
+                        <img class="news__image-element" src="{% if item.contentImage %}{{ item.contentImage }}{% else %}/uploads/img/soccer_news_item.png{% endif %}">
+                        <form action="{{ oneup_uploader_endpoint('gallery') }}" class="dropzone imagezone">
+                            <input type="hidden" name="itemid" value="{{ item.id }}" />
+                            <div class="dz-message" data-dz-message>
+                        <span>
+                            <a class="overlay small">
+                                <i class="fa fa-plus"></i>
+                            </a>
+                        </span>
+                            </div>
+                        </form>
+                    </div>
+                {% else %}
+                    <div class="news__image"><img class="news__image-element" src="{{ item.contentImage }}"></div>
+                {% endif %}
+            {% endif %}
+            <div class="news__item-text" {{ createphp_attributes( rdf.content ) }}>{{ createphp_content( rdf.content ) | raw }}</div>
+        </div>
+    </div>
+{% endcreatephp %}

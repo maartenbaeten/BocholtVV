@@ -1,0 +1,94 @@
+CMS\TeamBundle\Entity\Team:
+    type: entity
+    table: team
+    repositoryClass: CMS\TeamBundle\Entity\TeamRepository
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        created:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        creator:
+            type: string
+            scale: 0
+            length: 200
+            unique: false
+            nullable: false
+            precision: 0
+        teamName:
+            type: string
+            scale: 0
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+        teamCode:
+            type: string
+            scale: 0
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+        teamAlias:
+            type: string
+            unique: true
+            nullable: true
+        teamDescription:
+            type: text
+            scale: 0
+            length: 500
+            unique: false
+            nullable: true
+            precision: 0
+        teamImage:
+            type: string
+            unique: true
+            nullable: true
+        classification:
+            type: array
+            unique: false
+            nullable: true
+            precision: 0
+        ordering:
+            type: integer
+            nullable: true
+        showRanking:
+            type: boolean
+            nullable: false
+    lifecycleCallbacks:
+            prePersist: [ preUpload ]
+            preUpdate: [ preUpload ]
+            postPersist: [ upload ]
+            postUpdate: [ upload ]
+            postRemove: [ removeUpload ]
+    oneToMany:
+        members:
+            targetEntity: CMS\TeamBundle\Entity\TeamMember
+            mappedBy: team
+            cascade: ["persist", "remove"]
+        members:
+            targetEntity: CMS\TeamBundle\Entity\Calendar
+            mappedBy: team
+            cascade: ["persist", "remove"]
+        news:
+            targetEntity: CMS\TeamBundle\Entity\News
+            mappedBy: team
+            cascade: ["persist", "remove"]
+    manyToOne:
+        category:
+            targetEntity: CMS\TeamBundle\Entity\Category
+            inversedBy: teams
+    lifecycleCallbacks: {  }

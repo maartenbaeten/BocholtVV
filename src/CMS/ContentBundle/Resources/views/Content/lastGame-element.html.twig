@@ -1,0 +1,24 @@
+{% if game %}
+    <div class="match-result__content">
+        <div class="match-result__content-team">
+            <div class="match-result__content-logo">
+                <img class="match-result__content-logo-image" src="{% if not game.home %}/{{ game.webPath }}{% else %}/uploads/img/bocholt_vv.png{% endif %}">
+            </div>
+            <div class="match-result__content-name">
+                {% if not game.home %}{{ game.challengerName }}{% else %}Bocholt VV{% endif %}
+            </div>
+        </div>
+        <div class="match-result__content-scoreholder">
+            <div class="match-result__content-score">{% if game.score %}{{ game.score }}{% else %}.. - ..{% endif %}</div>
+            <div class="match-result__content-match-date">{{ game.date|date('d-m-Y, G:i') }}</div>
+        </div>
+        <div class="match-result__content-team">
+            <div class="match-result__content-logo">
+                <img class="match-result__content-logo-image" src="{% if game.home %}/{{ game.webPath }}{% else %}/uploads/img/bocholt_vv.png{% endif %}">
+            </div>
+            <div class="match-result__content-name">
+                {% if game.home %}{{ game.challengerName }}{% else %}Bocholt VV{% endif %}
+            </div>
+        </div>
+    </div>
+{% endif %}

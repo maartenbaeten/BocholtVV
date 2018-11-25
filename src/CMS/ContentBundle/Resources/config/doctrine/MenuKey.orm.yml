@@ -1,0 +1,77 @@
+CMS\ContentBundle\Entity\MenuKey:
+    type: entity
+    table: CMS_menu_key
+    repositoryClass: CMS\ContentBundle\Entity\MenuKeyRepository
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        creationDate:
+            type: date
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        ordering:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        parentOrdering:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+        defaultKey:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+    manyToOne:
+        parentItem:
+            targetEntity: CMS\ContentBundle\Entity\MenuKey
+            cascade: {  }
+            mappedBy: null
+            inversedBy: children
+            joinColumns:
+                parent_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    oneToMany:
+        children:
+            targetEntity: CMS\ContentBundle\Entity\MenuKey
+            cascade: {  }
+            mappedBy: parentItem
+            inversedBy: null
+            orphanRemoval: false
+            orderBy: null
+        menuItems:
+            targetEntity: CMS\ContentBundle\Entity\MenuItems
+            cascade: {  }
+            mappedBy: menuKey
+            inversedBy: null
+            orphanRemoval: false
+            orderBy: null
+        positions:
+            targetEntity: CMS\ContentBundle\Entity\ContentPosition
+            cascade: {  }
+            mappedBy: menuKey
+            inversedBy: null
+            orphanRemoval: false
+            orderBy: null
+    lifecycleCallbacks: {  }

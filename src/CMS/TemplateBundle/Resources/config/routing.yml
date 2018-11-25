@@ -1,0 +1,7 @@
+cms_template_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: CMSTemplateBundle:Default:index }
+
+cms_template_homepage:
+    pattern:  /{menuitemid}
+    defaults: { _controller: CMSTemplateBundle:Default:index, menuitemid:1 }

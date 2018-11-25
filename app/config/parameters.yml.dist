@@ -1,0 +1,15 @@
+parameters:
+    database_driver:   pdo_mysql
+    database_host:     127.0.0.1
+    database_port:     null
+    database_name:     bocholt-vv
+    database_user:     c2e8a1df01f5
+    database_password: 0b3e80fa90b3343c
+
+    mailer_transport:  smtp
+    mailer_host:       127.0.0.1
+    mailer_user:       null
+    mailer_password:   null
+
+    locale:            en
+    secret:            100af63a445ba1d33f5633a016e8a14bf8895a6e

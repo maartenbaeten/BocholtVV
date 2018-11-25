@@ -1,0 +1,31 @@
+{{ form_start(form) }}
+<link href="/assets/css/select2.css" rel="stylesheet"/>
+    <div class="row">
+        <div class="col-md-12">
+            {{ form_widget(form.name) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            {{ form_widget(form.email) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12" style="">
+            {{ form_widget(form.dreamjob, {'id': 'e1'}) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 file-upload">
+            <label for="file-input" class="label-fullwidth">
+                <img src="/assets/images/select_pdf_{{ app.request.locale }}.png" class="pointer" width="100%"/>
+            </label>
+            {{ form_widget(form.file, {'id': 'file-input'}) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            {{ form_widget(form.save, { 'label': 'contact.upload' }) }}
+        </div>
+    </div>
+{{ form_end(form) }}

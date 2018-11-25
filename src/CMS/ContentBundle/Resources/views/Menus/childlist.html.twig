@@ -1,0 +1,13 @@
+{% if items|length > 0 %}
+	{% for key in items %}
+		<li class="{% if key.id == menuKey.id %}active{% endif %}"><a href="{{ path('cms_content_homepage',{'id': key.menuItems[0].alias, '_locale': app.request.locale}) }}">{{ key.menuItems[0].title }}</a></li>
+		{% if is_granted('ROLE_ADMIN') and deleterow %}
+		<div class="smalldeleterow">
+			<a href="{{ path('delete_menuitem', { 'menuKeyid': key.id, 'language': app.request.locale }) }}" class="confirm"><img src="/bundles/images/delete_icon.png" class="inlineblock" width="10px" /></a>
+            <a href="{{ path('edit_menuitem', { 'menuKeyid': key.id, 'language': app.request.locale }) }}" data-toggle="modal" data-target="#myModal"><img src="/bundles/images/edit.png" class="inlineblock" style='margin-left:8px;' width="10px" /></a>
+			<a href="{{ path('increase_menuitem', { 'menuKeyid': key.id, 'language': app.request.locale }) }}"><img src="/bundles/images/up_icon.png" class="inlineblock" style='margin-left:8px;' width="7px" /></a>
+			<a href="{{ path('decrease_menuitem', { 'menuKeyid': key.id, 'language': app.request.locale }) }}"><img src="/bundles/images/down_icon.png" class="inlineblock" style='margin-left:2px;' width="7px" /></a>
+		</div>
+		{% endif %}
+	{% endfor %}
+{% endif %}

@@ -1,0 +1,100 @@
+.deleterow.hidden-xs {
+    position: absolute;
+    z-index: 9999;
+    background: rgba(0,0,0,0.4);
+    width: 20%;
+}
+
+.deleterow a{
+    color: #fff;
+    margin-right: 5px;
+    font-size: 10pt;
+    cursor: pointer;
+}
+
+.create-ui-logo{
+    bottom: 0!important;
+    top: initial !important;
+}
+
+.create-ui-toolbar-wrapper{
+    bottom: 0!important;
+    top: initial !important;
+}
+
+a.normal{
+    text-decoration: none;
+}
+
+.dropzone{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent !important;
+    border: none !important;
+}
+
+.btn-full-width{
+    width: 100%;
+}
+
+.col-xs-1-sm{
+    width: 6.16%;
+}
+
+table.table1 {
+    width: 100%;
+    border: 1px solid #FBC02D;
+    margin-bottom: 20px;
+}
+
+tr.table_subtitle{
+    color: #727272;
+    text-transform: uppercase;
+}
+
+tr.table_subtitle td{
+    padding: 8px;
+    line-height: 1.42857143;
+    padding-top: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+tr.table_row_even td, tr.table_row_odd td {
+    padding: 8px;
+    font-weight: 500;
+}
+
+table.table_aanduidingen{
+    width: 100%;
+}
+
+table .datum{
+    width: 11%;
+}
+
+table .uur{
+    width: 5%;
+}
+
+table .tr_0 td, table .table_title, table .table_subtitle{
+    padding: 8px;
+}
+
+table .table_title{
+    background: #FBC02D;
+    color: #fff;
+    font-weight: bold;
+}
+
+.margin-bottom-15{
+    margin-bottom: 15px;
+}
+
+img.youthTeam{
+    margin-bottom: 20px;
+    width: 100%;
+}

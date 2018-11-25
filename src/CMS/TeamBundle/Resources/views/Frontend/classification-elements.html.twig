@@ -1,0 +1,14 @@
+{% for element in classification %}
+    <tr class="table-row {% if element.bocholtVV %}table-row--active{% endif %}">
+        <td class="table__cell--center table__cell--gray">{{ element.position }}</td>
+        <td>{{ element.teamName }}</td>
+        <td class="hidden-xs">{{ element.M }}</td>
+        <td class="hidden-xs">{{ element.W }}</td>
+        <td class="hidden-xs">{{ element.G }}</td>
+        <td class="hidden-xs">{{ element.V }}</td>
+        <td class="hidden-xs">{{ element.F }}</td>
+        <td class="hidden-xs">{{ element.A }}</td>
+        <td class="hidden-xs">{{ element.GD }}</td>
+        <td>{{ element.PTN }}</td>
+    </tr>
+{% endfor %}

@@ -1,0 +1,35 @@
+<div class="contact-wrap">
+{{ form_start(form) }}
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                {{ form_widget(form.name) }}
+            </div>
+            <div class="form-group">
+                {{ form_widget(form.email) }}
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                {{ form_widget(form.dreamjob) }}
+            </div>
+            <div class="form-group">
+                {{ form_widget(form.description) }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 file-upload-second">
+            <label for="file-input-second" class="label-fullwidth">
+                <img src="/assets/images/select_pdf_wide_{{ app.request.locale }}.png" class="pointer" width="100%"/>
+            </label>
+            {{ form_widget(form.file, {'id': 'file-input-second'}) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            {{ form_widget(form.save, { 'label': 'contact.apply' }) }}
+        </div>
+    </div>
+{{ form_end(form) }}
+</div><!--/.row-->

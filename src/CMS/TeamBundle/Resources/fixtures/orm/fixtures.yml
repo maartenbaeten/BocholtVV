@@ -1,0 +1,17 @@
+CMS\TeamBundle\Entity\Role:
+  role1:
+    id: 1
+    roleName: Goalkeeper
+    number: 1
+  role2:
+    id: 2
+    roleName: Defender
+    number: 2
+  role3:
+    id: 3
+    roleName: Midfielder
+    number: 3
+  role4:
+    id: 4
+    roleName: Forward
+    number: 4

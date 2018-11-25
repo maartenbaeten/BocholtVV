@@ -1,0 +1,50 @@
+CMS\ContentBundle\Entity\Categories:
+    type: entity
+    table: CMS_content_categories
+    repositoryClass: CMS\ContentBundle\Entity\CategoriesRepository
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        description:
+            type: text
+            scale: 0
+            length: 500
+            unique: false
+            nullable: true
+            precision: 0
+    manyToOne:
+        parentCategory:
+            targetEntity: CMS\ContentBundle\Entity\Categories
+            cascade: {  }
+            mappedBy: null
+            inversedBy: children
+            joinColumns:
+                parent_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    oneToMany:
+        children:
+            targetEntity: CMS\ContentBundle\Entity\Categories
+            cascade: {  }
+            mappedBy: parentCategory
+            inversedBy: null
+            orphanRemoval: false
+            orderBy: null
+    manyToMany:
+        contentItems:
+            targetEntity: CMS\ContentBundle\Entity\Content
+            cascade: {  }
+            mappedBy: categories
+            inversedBy: null
+            joinTable: {  }
+            orderBy: null
+    lifecycleCallbacks: {  }

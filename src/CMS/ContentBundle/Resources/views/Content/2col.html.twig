@@ -1,0 +1,25 @@
+{% extends "CMSTemplateBundle:Bocholtvv:index.html.twig" %}
+{% set menuKey = menuKey %}
+{% set menuitem = menuitem %}
+{% block bodyhead %}
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.7&appId=188128021321544";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+{% endblock %}
+{% block menu %}
+    {{ render(controller('CMSTeamBundle:Team:listAll', { 'template': 'CMSTeamBundle:Frontend:team-menu.html.twig', 'originalRequest' : app.request, 'menuKey': menuKey })) }}
+{% endblock %}
+{% block main %}
+    {{ render(controller('CMSContentBundle:Content:items', { 'menuKey': menuKey, 'position': 1, 'locale': locale, 'originalRequest' : app.request })) }}
+{% endblock %}
+{% block social %}
+    <div class="footer__social-media">
+        <a class="facebook" target="_blank" href="https://www.facebook.com/bocholtvvjeugd/?fref=nf"><i class="icon icon--fb-icon"></i></a>
+        <a class="twitter" target="_blank" href="https://twitter.com/bocholtervv"><i class="icon icon--tw-icon"></i></a>
+    </div>
+{% endblock %}

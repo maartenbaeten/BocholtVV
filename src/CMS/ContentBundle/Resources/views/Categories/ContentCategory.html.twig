@@ -1,0 +1,9 @@
+{% if originalRequest.get('contentid') %}
+    <div class="row grid-space-20 paddingtop15 nomargin">
+        {{ render(controller('CMSContentBundle:Content:showContent', { 'id': originalRequest.get('contentid'), 'menuKey': menuKey })) }}
+    </div>
+{% else %}
+    <div class="row grid-space-20 paddingtop15 nomargin">
+        {{ render(controller('CMSContentBundle:Content:showCategory', { 'id': item.content, 'menuKey': menuKey })) }}
+    </div>
+{% endif %}

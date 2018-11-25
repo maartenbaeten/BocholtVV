@@ -1,0 +1,44 @@
+contact:
+  name: Name
+  firstname: Firstname
+  email: Email
+  subject: Subject
+  message: Message
+  sendMessageText: Send us a message!
+  sendMessage: Send your message
+  dreamjob: Dreamjob
+  apply: Apply!
+  selectDreamjob: I am looking for a job in …
+  upload: Upload
+  applyNow: Apply now!
+home:
+  youngTalents: Young Talents
+  employers: Employers
+  welcomeTo: Welcome to
+  crossbridgeSlogan: Building a bridge between young talent and business
+  subscribeNewsletter: Subscribe to our newsletter!
+  subscribeNewsletterSuccess: Newsletter subscription was a success!
+  email: Email
+enterprises:
+  search_employees_that_fit_in: I am looking for … employees who will fit right in!
+  ways_to_attract_and_keep_young_talent: I am looking for … ways to attract and retain young talent!
+  professional_HR_advice: I am looking for …  professional HR advice
+  talent_attraction: Talent attraction
+  consulting: Consulting
+  talent_management: Talent management
+youg_talents:
+  find_dream_job: I want … to find my dream job!
+  develop_potential: I want … to develop my full potential!
+  find_out_more_businessworld: I want … to find out more about the businessworld!
+  personal_adivice: I want … tailor-made advice
+  personal_coaching: Personal coaching
+  workshops: Workshops
+  training_sessions: Training sessions
+  job_search: Job Search
+sent_success: Your message was sent successfully, we will get in touch with you!
+security:
+  login: Login
+  password: Password
+buttons:
+  submit: Submit
+  remember: remember

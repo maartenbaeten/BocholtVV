@@ -1,0 +1,87 @@
+{% extends "@CMSTeam/index.html.twig" %}
+
+{% block main %}
+    <div class="wrapper wrapper-content-wide animated fadeInRight">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content" style="font-size:16px">
+                        <div class="row">
+                            {% if member.playerImage %}
+                                <div class="col-md-2">
+                                    <img src="{{ asset('uploads/player-images/' ~ member.playerImage) }}" height="200px">
+                                </div>
+                            {% endif %}
+                            <div class="col-md-4">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            First name
+                                        </td>
+                                        <td style="width:20px; text-align: center">:</td>
+                                        <td style="font-weight: 600;">
+                                            {{ member.firstName }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Last name
+                                        </td>
+                                        <td style="width:20px; text-align: center">:</td>
+                                        <td style="font-weight: 600;">
+                                            {{ member.lastName }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Alias
+                                        </td>
+                                        <td style="width:20px; text-align: center">:</td>
+                                        <td style="font-weight: 600;">
+                                            {{ member.playerAlias }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Role
+                                        </td>
+                                        <td style="width:20px; text-align: center">:</td>
+                                        <td style="font-weight: 600;">
+                                            {{ member.role.roleName }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Team
+                                        </td>
+                                        <td style="width:20px; text-align: center">:</td>
+                                        <td style="font-weight: 600;">
+                                            {{ member.team.teamName }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Address
+                                        </td>
+                                        <td style="width:20px; text-align: center">:</td>
+                                        <td style="font-weight: 600;">
+                                            {{ member.zip }} {{ member.city }} {{ member.street }} {{ member.number }}
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:20px">
+                            <div class="col-md-2">
+                                <a href="{{ path('admin_teammember_list_by_team', {'id' : member.team.id }) }}">
+                                    Full {{ member.team.teamName }} squad
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

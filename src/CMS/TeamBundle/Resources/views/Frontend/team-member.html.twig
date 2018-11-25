@@ -1,0 +1,14 @@
+<div class="ranking__title">{{ team.teamName }}</div>
+<div class="team">
+    {% for key, role in teamSkeleton %}
+        <div class="team__subtitle">{{ key }}</div>
+        <div class="team__members">
+            {% for member in role %}
+                <a href="{{ path('cms_content_homepage_param', {'id': originalRequest.get('id'), '_locale': app.request.locale, 'param': member.playerAlias }) }}" class="team__member">
+                    <img class="team__member-image" src="{% if member.playerImage %}/{{ member.getWebPath() }}{% else %}{{ asset('uploads/img/placeholder.png') }}{% endif %}">
+                    <div class="team__member-title">{{ member.firstName ~ ' ' ~ member.lastName }}</div>
+                </a>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>

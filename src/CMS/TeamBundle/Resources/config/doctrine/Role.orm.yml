@@ -1,0 +1,38 @@
+CMS\TeamBundle\Entity\Role:
+    type: entity
+    table: role
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        roleName:
+            type: string
+            scale: 0
+            length: null
+            unique: true
+            nullable: false
+            precision: 0
+        singularRoleName:
+            type: string
+            scale: 0
+            length: null
+            nullable: false
+            precision: 0
+        number:
+            type: integer
+        staff:
+            type: boolean
+    oneToMany:
+        members:
+            targetEntity: CMS\TeamBundle\Entity\TeamMember
+            mappedBy: role
+            cascade: ["persist"]
+    lifecycleCallbacks: {  }

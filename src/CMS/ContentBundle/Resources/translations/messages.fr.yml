@@ -1,0 +1,38 @@
+contact:
+  name: Nom
+  firstname: Prénom
+  email: Courriel
+  subject: Sujet
+  message: Message
+  sendMessageText: Envoyez-nous un message!
+  sendMessage: Envoyer votre message
+  dreamjob: Job de Rêve
+  apply: Postuler!
+  selectDreamjob: Je cherche un emploi dans ...
+  upload: Uploader
+  applyNow: Postule maintenant!
+home:
+  youngTalents: Jeunes Talents
+  employers: Entreprises
+  welcomeTo: Bienvenue chez
+  crossbridgeSlogan: Le pont entre jeunes talents et entreprises!
+  subscribeNewsletter: Abonne-toi à notre lettre d'info!
+  subscribeNewsletterSuccess: Vous avez souscrit avec succès à notre lettre d'info!
+  email: Courriel
+enterprises:
+  search_employees_that_fit_in: Je cherche... des employés qui concordent avec notre culture d'entreprise!
+  ways_to_attract_and_keep_young_talent: Je cherche … des manières pour attirer et garder de jeunes talents!
+  professional_HR_advice: Je cherche… des conseils professionnels en RH
+  talent_attraction: Attraction de talent
+  consulting: Consulting
+  talent_management: Talent management
+youg_talents:
+  find_dream_job: Je veux… décrocher l'emploi de mes rêves!
+  develop_potential: Je veux… développer mes talents!
+  find_out_more_businessworld: Je veux… mieux connaître le monde des entreprises!
+  personal_adivice: Je veux… des conseils personnalisés
+  personal_coaching: Coaching individuel
+  workshops: Ateliers
+  training_sessions: Sessions de coaching
+  job_search: La recherche d'un emploi
+sent_success: Votre message a bien été envoyé, nous prendrons contact avec vous!

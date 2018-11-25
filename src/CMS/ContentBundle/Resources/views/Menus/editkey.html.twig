@@ -1,0 +1,48 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="mySmallModalLabel">Edit Menu Item</h4>
+    </div>
+    <div class="modal-body">
+        {{ form_start(form, {'attr': {'class': 'nomargin'}}) }}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    {{ form_label(form.parentItem) }}
+                    {{ form_errors(form.parentItem) }}
+                    {{ form_widget(form.parentItem, {'attr': {'class': 'form-control', 'placeholder': 'Title'}}) }}
+                </div>
+            </div>
+        </div>
+        {% for item in form.MenuItems %}
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {{ form_label(item.title) }}
+                        {{ form_errors(item.title) }}
+                        {{ form_widget(item.title, {'attr': {'class': 'form-control', 'placeholder': 'Title'}}) }}
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        {{ form_label(item.language) }}
+                        {{ form_errors(item.language) }}
+                        {{ form_widget(item.language, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        {{ form_label(item.columns) }}
+                        {{ form_errors(item.columns) }}
+                        {{ form_widget(item.columns, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_widget(item.menu) }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        <div class="modal-footer">
+            {{ form_widget(form.save, {'attr': {'class': 'btn btn-sm btn-default'}}) }}
+        </div>
+        {{ form_end(form) }}
+    </div>
+</div>

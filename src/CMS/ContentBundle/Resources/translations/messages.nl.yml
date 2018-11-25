@@ -1,0 +1,44 @@
+contact:
+  name: Naam
+  firstname: Voornaam
+  email: E-mail
+  subject: Onderwerp
+  message: Boodschap
+  sendMessageText: Contacteer ons!
+  sendMessage: Verzend je Bericht
+  dreamjob: Droomjob
+  apply: Solliciteer!
+  selectDreamjob: Ik zoek een job in …
+  upload: Uploaden
+  applyNow: Solliciteer nu!
+home:
+  youngTalents: Jonge Talenten
+  employers: Bedrijven
+  welcomeTo: Welkom bij
+  crossbridgeSlogan: De brug tussen getalenteerde jongeren en bedrijven
+  subscribeNewsletter: Schrijf je in op onze nieuwsbrief!
+  email: E-mail
+  subscribeNewsletterSuccess: Je werd succesvol ingeschreven voor onze nieuwsbrief!
+enterprises:
+  search_employees_that_fit_in: Ik zoek … werknemers die passen in onze bedrijfscultuur!
+  ways_to_attract_and_keep_young_talent: Ik zoek … manieren om jong talent aan te trekken en te behouden!
+  professional_HR_advice: Ik zoek … professioneel HR advies
+  talent_attraction: Talent attraction
+  consulting: Consulting
+  talent_management: Talent management
+youg_talents:
+  find_dream_job: Ik wil…. mijn droomjob vinden!
+  develop_potential: Ik wil… mijn talenten ontwikkelen!
+  find_out_more_businessworld: Ik wil… meer inzicht in de bedrijfswereld!
+  personal_adivice: Ik wil… gepersonaliseerd advies
+  personal_coaching: Personal coaching
+  workshops: Workshop
+  training_sessions: Trainingsessie
+  job_search: Job Search
+sent_success: Je bericht werd succesvol verzonden, we nemen zo snel mogelijk contact met je op!
+security:
+  login: Login
+  password: Wachtwoord
+buttons:
+  remember: Onthoud wachtwoord
+  submit: Login

@@ -1,0 +1,57 @@
+CMS\ContentBundle\Entity\ContentPosition:
+    type: entity
+    table: CMS_content_menu_items
+    repositoryClass: CMS\ContentBundle\Entity\ContentPositionRepository
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        position:
+            type: text
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        ordering:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        params:
+            type: text
+            scale: 0
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+    manyToOne:
+        menuKey:
+            targetEntity: CMS\ContentBundle\Entity\MenuKey
+            cascade: {  }
+            mappedBy: null
+            inversedBy: positions
+            joinColumns:
+                menu_key_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        contentKey:
+            targetEntity: CMS\ContentBundle\Entity\ContentKey
+            cascade: {  }
+            mappedBy: null
+            inversedBy: positions
+            joinColumns:
+                content_key:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

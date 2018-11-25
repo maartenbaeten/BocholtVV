@@ -1,0 +1,19 @@
+<div class="tabber__content-title tabber__content-title--inline">Technische Staf</div>
+<div class="team">
+    <div class="member-card-holder">
+        {% for member in teamMembers %}
+            <div class="member-card">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <a target="_blank" href="{% if member.playerImage %}/{{ member.getWebPath() }}{% endif %}">
+                            <div style="background-image: url('{% if member.playerImage %}{{ member.getWebPath() | imagine_filter('player_image') }}{% else %}{{ asset('uploads/img/placeholder.png') }}{% endif %}'); background-size:100%; background-repeat: no-repeat; height: 137px; width: 92px;"></div>
+                        </a>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="member-card__title">{{ member.firstName ~ ' ' ~ member.lastName }}</div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

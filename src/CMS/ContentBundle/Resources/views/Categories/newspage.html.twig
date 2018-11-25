@@ -1,0 +1,17 @@
+<div class="section section--menu-seperator"></div>
+<div class="section section--news">
+    <div class="container">
+        <div class="news">
+            {% if originalRequest.get('param') %}
+                {{ render(controller('CMSContentBundle:Content:getContentByAlias', { 'id': originalRequest.get('param'), 'menuKey': menuKey, 'template': 'CMSContentBundle:Content:newspage-full.html.twig', 'originalRequest': originalRequest })) }}
+            {% else %}
+                <div class="news__title">
+                    Laatste Nieuws
+                </div>
+                <div class="news__items">
+                    {{ render(controller('CMSContentBundle:Content:category', { 'id': item.content, 'menuKey': menuKey, 'template': 'CMSContentBundle:Content:newspage-element.html.twig' })) }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+{% extends "@CMSUser/User/form.html.twig" %}
+
+{% block title %}
+    Edit user
+{% endblock %}
+
+{% block password_roles %}
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+                {{ form_widget(form.roles, {'attr':{ 'class': 'form-control'}} ) }}
+                {{ form_errors(form.roles)}}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,43 @@
+CMS\TeamBundle\Entity\News:
+    type: entity
+    table: news
+    repositoryClass: CMS\TeamBundle\Repository\NewsRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        created:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        title:
+            type: string
+            length: 255
+        content:
+            type: text
+        newsImage:
+            type: string
+            length: 255
+            nullable: true
+    lifecycleCallbacks:
+            prePersist: [ preUpload ]
+            preUpdate: [ preUpload ]
+            postPersist: [ upload ]
+            postUpdate: [ upload ]
+            postRemove: [ removeUpload ]
+    manyToOne:
+        team:
+            targetEntity: CMS\TeamBundle\Entity\Team
+            inversedBy: news
+    oneToMany:
+        attachments:
+            targetEntity: CMS\TeamBundle\Entity\NewsAttachment
+            mappedBy: news
+            cascade: ["persist", "remove"]
+    lifecycleCallbacks: {  }

@@ -1,0 +1,11 @@
+<div class="row nomargin default-bg padding20 paddingtop15 margintop15 paddingbottom30 justify smallfont blue">
+{% createphp item as="rdf" noautotag %}
+<div {{ createphp_attributes(rdf) }}>
+	<div class="row">
+		<div class="col-md-12">
+				<div {{ createphp_attributes( rdf.content ) }}>{{ createphp_content( rdf.content ) }}</div>
+		</div>
+	</div>
+</div>
+{% endcreatephp %}
+</div>

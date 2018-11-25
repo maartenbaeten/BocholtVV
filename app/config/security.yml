@@ -1,0 +1,63 @@
+# app/config/security.yml
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
+    role_hierarchy:
+        ROLE_TRAINER:     ROLE_USER
+        ROLE_ADMIN:       ROLE_TRAINER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+
+    providers:
+        in_memory:
+            memory: ~
+        fos_userbundle:
+            id: fos_user.user_provider.username
+
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            #anonymous: ~
+            # activate different ways to authenticate
+
+            # http_basic: ~
+            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
+
+            # form_login: ~
+            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                csrf_provider: security.csrf.token_manager # Use form.csrf_provider instead for Symfony <2.4
+                default_target_path: /admin/dashboard
+            logout:       true
+            anonymous:    true
+        #default:
+        #    anonymous: ~
+            #form_login:
+            #    check_path: _security_check
+            #    login_path: cms_content_homepage
+         #   logout:
+         #       path:   _logout
+         #       target: cms_content_homepage
+         #   form_login:
+                  #csrf_provider:       form.csrf_provider
+         #         login_path:          fos_user_security_login
+         #         check_path:          fos_user_security_check
+         #         default_target_path: welcome
+
+    access_control:
+        #- { path: ^/13, roles: ROLE_ADMIN }
+        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+        - { path: ^/install, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/logout, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin, roles: ROLE_TRAINER }
+        - { path: ^/efconnect, role: ROLE_ADMIN }
+        - { path: ^/elfinder, role: ROLE_ADMIN }
+        - { path: ^/i, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+
+

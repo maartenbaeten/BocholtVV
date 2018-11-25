@@ -1,0 +1,23 @@
+{% set visibility = 'muted' %}
+<div class="stages-wrapper undercover">
+    <div>
+        <p class="{% if step != 1 %}{{ visibility }}{% endif %}">
+        Step 1: Language select
+        </p>
+    </div>
+    <div>
+        <p class="{% if step != 2 %}{{ visibility }}{% endif %}">
+        Step 2: Database access
+        </p>
+    </div>
+    <div>
+        <p class="{% if step != 3 %}{{ visibility }}{% endif %}">
+        Step 3: Mailer setup
+        </p>
+    </div>
+    <div>
+        <p class="{% if step != 4 %}{{ visibility }}{% endif %}">
+        Step 4: Super administrator account
+        </p>
+    </div>
+</div>

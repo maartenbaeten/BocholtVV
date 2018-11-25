@@ -1,0 +1,132 @@
+<?php
+// src/CMS/Bundle/ContentBundle/Entity/Content.php
+namespace CMS\ContentBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use CMS\ContentBundle\Entity\MenuItems;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * @ORM\Table(name="CMS_menu_items_types")
+ * @ORM\Entity()
+ */
+class MenuItemsTypes
+{
+    /**
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id()
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(name="title", type="string")
+     */
+    private $typeName;
+	
+	/**
+     * @ORM\Column(name="articleLink", type="string")
+     */
+    private $articleLink;
+	
+	/**
+     * @ORM\OneToMany(targetEntity="MenuItems", mappedBy="menuType")
+     **/
+    private $items;
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->items = new ArrayCollection();
+    }
+    
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set typeName
+     *
+     * @param string $typeName
+     * @return MenuItemsTypes
+     */
+    public function setTypeName($typeName)
+    {
+        $this->typeName = $typeName;
+    
+        return $this;
+    }
+
+    /**
+     * Get typeName
+     *
+     * @return string 
+     */
+    public function getTypeName()
+    {
+        return $this->typeName;
+    }
+
+    /**
+     * Set articlelink
+     *
+     * @param string $articleLink
+     * @return MenuItemsTypes
+     */
+    public function setArticleLink($articleLink)
+    {
+        $this->articleLink = $articleLink;
+    
+        return $this;
+    }
+
+    /**
+     * Get articleLink
+     *
+     * @return string 
+     */
+    public function getArticleLink()
+    {
+        return $this->articleLink;
+    }
+
+    /**
+     * Add items
+     *
+     * @param \CMS\ContentBundle\Entity\MenuItems $items
+     * @return MenuItemsTypes
+     */
+    public function addItem(MenuItems $items)
+    {
+        $this->items[] = $items;
+    
+        return $this;
+    }
+
+    /**
+     * Remove items
+     *
+     * @param \CMS\ContentBundle\Entity\MenuItems $items
+     */
+    public function removeItem(MenuItems $items)
+    {
+        $this->items->removeElement($items);
+    }
+
+    /**
+     * Get items
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getItems()
+    {
+        return $this->items;
+    }
+}

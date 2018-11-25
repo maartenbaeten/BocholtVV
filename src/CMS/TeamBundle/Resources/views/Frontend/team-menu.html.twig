@@ -1,0 +1,16 @@
+<ul class="nav navbar-nav navbar-right">
+    <li class="hidden active">
+        <a href="#page-top"></a>
+    </li>
+    <li>
+        <a class="navbar__item navbar__item--small page-scroll" href="{{ path('cms_content_homepage', {'id': 'jeugd-kbvv', '_locale': app.request.locale}) }}">Home</a>
+    </li>
+    {% for team in teams %}
+        {% if team.teamName != 'A-Kern' %}
+            <li>
+                <a class="navbar__item navbar__item--small page-scroll {% if team.teamAlias == originalRequest.get('team') %}navbar__item--active{% endif %}" href="{{ path('cms_content_homepage_team',{'id': 'jeugd-kbvv', '_locale': app.request.locale, 'team': team.teamAlias}) }}">{{ team.teamName }}</a>
+            </li>
+        {% endif %}
+    {% endfor %}
+    {{ render(controller('CMSContentBundle:Menu:parentItems', { 'id': 2, 'menuKey': menuKey })) }}
+</ul>

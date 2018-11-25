@@ -1,0 +1,10 @@
+<div class="section section--menu-seperator"></div>
+<div class="section section--ranking section--ranking--fixed">
+    <div class="ranking-holder ranking-holder--full">
+        {% if originalRequest.get('param') %}
+            {{ render(controller('CMSTeamBundle:Team:view', { 'alias': originalRequest.get('param') })) }}
+        {% else %}
+            {{ render(controller('CMSTeamBundle:Team:listFrontend', { 'teamId': 1, 'originalRequest': originalRequest, 'staff': 1 })) }}
+        {% endif %}
+    </div>
+</div>

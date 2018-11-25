@@ -1,0 +1,12 @@
+<ul class="nav navbar-nav navbar-right">
+{% for item in items %}
+	<li class="{% if item.menuKey.children|length > 0 %}dropdown{% endif %} {% if item.menuKey.id == menuKey.id or (menuKey.parentItem != null and item.menuKey.id == menuKey.parentItem.id) %}active{% endif %}">
+		<a {% if item.menuKey.children is empty %} href="/app_dev.php/{{ item.menuKey.id }}/{{ app.request.locale }}"{% endif %} {% if item.menuKey.children is not empty %} class="dropdown-toggle" data-toggle="dropdown" {% endif %}>{{ item.title }}</a>
+		{% if item.menuKey.children is not empty %}
+		<ul class="dropdown-menu">
+			{{ render(controller('CMSContentBundle:Menu:children', { 'id': 1, 'menuKey': item.menuKey })) }}
+		</ul>
+		{% endif %}
+	</li>
+{% endfor %}
+</ul>

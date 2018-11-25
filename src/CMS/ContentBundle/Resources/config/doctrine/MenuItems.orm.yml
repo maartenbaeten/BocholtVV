@@ -1,0 +1,85 @@
+CMS\ContentBundle\Entity\MenuItems:
+    type: entity
+    table: CMS_menu_items
+    repositoryClass: CMS\ContentBundle\Entity\MenuItemsRepository
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        title:
+            type: string
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        alias:
+            type: string
+            scale: 0
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+        status:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        columns:
+            type: string
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        target:
+            type: text
+            scale: 0
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+        language:
+            type: text
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        params:
+            type: text
+            scale: 0
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+    manyToOne:
+        menu:
+            targetEntity: CMS\ContentBundle\Entity\Menus
+            cascade: {  }
+            mappedBy: null
+            inversedBy: items
+            joinColumns:
+                menu_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        menuKey:
+            targetEntity: CMS\ContentBundle\Entity\MenuKey
+            cascade: {  }
+            mappedBy: null
+            inversedBy: menuItems
+            joinColumns:
+                menu_key:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

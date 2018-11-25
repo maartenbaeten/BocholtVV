@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!--title-->
+    <title>Crossbridge</title>
+
+    <!--CSS-->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/assets/css/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/css/owl.transitions.css" rel="stylesheet">
+    <link href="/assets/css/prettyPhoto.css" rel="stylesheet">
+    <link href="/assets/css/main.css" rel="stylesheet">
+    <link href="/assets/css/custom.css" rel="stylesheet">
+    <link href="/assets/css/init.css" rel="stylesheet">
+    <link id="css-preset" href="/assets/css/presets/preset2.css" rel="stylesheet">
+    <link href="/assets/css/responsive.css" rel="stylesheet">
+
+    <!--Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,500,700,800,100,600' rel='stylesheet' type='text/css'>
+
+    <!--[if lt IE 9]>
+    <script src="/assets/js/html5shiv.js"></script>
+    <script src="/assets/js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="/assets/images/ico/favicon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/assets/images/ico/apple-touch-icon-57-precomposed.png">
+</head><!--/head-->
+<body id="{% block bodyid %}{% endblock %}">
+<header id="navigation">
+    <div class="socialrow correctedsocialrow hidden-xs hidden-sm">
+        <div class="{% if app.request.get('_locale') == 'nl' %}activelanguagelink{% endif %} socialicon"><a href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({'_locale': 'nl'}|merge(app.request.query.all))) }}">NL</a>
+        </div><div class="{% if app.request.get('_locale') == 'en' %}activelanguagelink{% endif %} socialicon"><a href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({'_locale': 'en'}|merge(app.request.query.all))) }}">EN</a>
+        </div><div class="{% if app.request.get('_locale') == 'fr' %}activelanguagelink{% endif %} socialicon last"><a href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({'_locale': 'fr'}|merge(app.request.query.all))) }}">FR</a>
+        </div>
+    </div>
+    <div class="navbar navbar-static-top" role="banner">
+        <div class="container width100">
+            <div class="row header-section">
+                <div class="col-sm-3">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="{{ path('cms_content_homepage') }}">
+                            <h1><img class="img-responsive homepagelogo" src="/assets/images/Logo.png" alt="logo"></h1>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <nav class="collapse navbar-collapse navbar-right">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a data-toggle="modal" href="{{ path('cms_popup',{'id': 7, '_locale': app.request.locale}) }}" data-target="#myModal">Contact</a>
+                            </li>
+                        </ul>
+                        {{ render(controller('CMSContentBundle:Menu:parentItems', { 'id': 1, 'menuKey': menuKey })) }}
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</header><!--/#navigation-->
+{% block main %}{% endblock %}
+{% if app.request.get('sent') == 1 %}
+    <div class="modal fade" id="sentNewsletterModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="message-success">{{ 'sent_success' | trans }}</div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+<!--/#scripts-->
+<script type="text/javascript" src="/assets/js/jquery.js"></script>
+
+<script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.inview.min.js"></script>
+<script type="text/javascript" src="/assets/js/owl.carousel.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.countTo.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.parallax.js"></script>
+<script type="text/javascript" src="/assets/js/isotope.pkgd.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.easypiechart.min.js"></script>
+<script type="text/javascript" src="/assets/js/mousescroll.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.prettyPhoto.js"></script>
+<script type="text/javascript" src="/assets/js/main.js"></script>
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+
+{% include "CmfCreateBundle::includecssfiles.html.twig" %}
+{{ render(controller("cmf_create.jsloader.controller:includeJSFilesAction")) }}
+
+<script src="/assets/js/select2.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#e1").select2({
+            width: '100%',
+            maximumSelectionLength: 3,
+            placeholder: '{{ 'contact.selectDreamjob' | trans }}'
+        });
+        $('#sentNewsletterModal').modal('show');
+    });
+</script>
+
+</body>
+</html>

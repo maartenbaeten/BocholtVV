@@ -1,0 +1,20 @@
+<div class="section section--main">
+    <div class="homepage-logo">
+        <img src="/uploads/img/BVV_logo_white.png">
+    </div>
+    <div class="latest-news__social-media">
+        <a class="facebook" target="_blank" href="https://www.facebook.com/Bocholter-Voetbalvereniging-55835881388/?fref=ts"><i class="icon icon--fb-icon"></i></a>
+        <a class="twitter" target="_blank" href="https://twitter.com/bocholtervv"><i class="icon icon--tw-icon"></i></a>
+    </div>
+    <div class="latest-news">
+        <div class="latest-news__title">
+            Laatste Nieuws
+        </div>
+        <div class="latest-news__items">
+            {{ render(controller('CMSContentBundle:Content:categoryOffset', { 'id': 4, 'menuKey': menuKey, 'template': 'CMSContentBundle:Content:newspage-home-element.html.twig', 'offset': 3 })) }}
+        </div>
+        <div class="latest-news__read-more">
+            <a href="/nieuws" class="button">Alle Nieuws</a>
+        </div>
+    </div>
+</div>

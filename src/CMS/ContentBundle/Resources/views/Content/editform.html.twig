@@ -1,0 +1,42 @@
+{% extends "CMSTemplateBundle:Default:index.html.twig" %}
+
+{% block main %}
+    <div class="container">
+        <div class="row">
+
+            <!-- main start -->
+            <!-- ================ -->
+            <div class="main col-md-12">
+                <h1 class="page-title">Edit Content</h1>
+                <div class="separator-2"></div>
+                {{ form_start(form, {'attr': {'class': 'nomargin'}}) }}
+                <div class="row">
+                    <div class="col-md-5">
+                        {{ form_errors(form.contentTitle) }}
+                        {{ form_widget(form.contentTitle, {'attr': {'class': 'form-control', 'placeholder': 'Contenttitel'}}) }}
+                    </div>
+                    <div class="col-md-5">
+                        {{ form_errors(form.contentlink) }}
+                        {{ form_widget(form.contentlink, {'attr': {'class': 'form-control', 'placeholder': 'Link'}}) }}
+                    </div>
+                </div>
+                <div class="row margintop15">
+                    <div class="col-md-10">
+                        {{ form_errors(form.content) }}
+                        {{ form_widget(form.content, {'attr': {'class': 'tinymce'}}) }}
+                    </div>
+                </div>
+                <div class="row blankseperator">
+                    <div class="col-md-12">
+                        {{ form_widget(form.save, {'attr': {'class': 'btn btn-default'}}) }}
+                        <a href="{{ path('cms_content_homepage', {'id': menuKey.id, '_locale': app.request.locale }) }}" class="btn btn-default">Candel</a>
+                    </div>
+                </div>
+                {{ form_rest(form) }}
+                {{ form_end(form) }}
+            </div>
+            <!-- main end -->
+        </div>
+    </div>
+    {{ tinymce_init() }}
+{% endblock %}

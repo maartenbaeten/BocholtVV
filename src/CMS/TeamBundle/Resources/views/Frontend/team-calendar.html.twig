@@ -1,0 +1,11 @@
+<table class="table" cellspacing="0">
+    <thead class=table-haeding>
+    <td>Datum</td>
+    <td>Thuis</td>
+    <td>Uit</td>
+    <td>Score</td>
+    </thead>
+    <tbody>
+    {{ render(controller('CMSTeamBundle:Team:teamCalendar', { 'teamId': team.id, 'template': 'CMSTeamBundle:Frontend:calendar-table-element.html.twig' })) }}
+    </tbody>
+</table>

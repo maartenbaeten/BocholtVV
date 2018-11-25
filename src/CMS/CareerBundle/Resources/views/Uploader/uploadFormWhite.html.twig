@@ -1,0 +1,10 @@
+<div class="post" style="margin-top: 20px;">
+    <div class="post-content">
+        <h2 class="entry-title" style="margin-bottom: 30px;">
+            {{ 'contact.sendMessageText' | trans }}
+        </h2>
+        <div class="entry-summary">
+            {{ render(controller('CMSCareerBundle:Resume:wideform', { 'subject': '' , 'language': app.request.locale, 'menuKeyid': menuKey.id, 'contentid': '5' })) }}
+        </div>
+    </div>
+</div>

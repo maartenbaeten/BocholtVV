@@ -1,0 +1,25 @@
+<div class="section section--menu-seperator"></div>
+<div class="section section--ranking section--ranking--fixed">
+    <div class="ranking-holder ranking-holder--full">
+        <div class="ranking__title">2de klasse B Amateurs</div>
+        <div class="ranking">
+            <table class="table" cellspacing="0">
+                <thead class=table-haeding>
+                    <td class="table__cell--center">POS</td>
+                    <td>TEAM</td>
+                    <td class="hidden-xs">M</td>
+                    <td class="hidden-xs">W</td>
+                    <td class="hidden-xs">G</td>
+                    <td class="hidden-xs">V</td>
+                    <td class="hidden-xs">F</td>
+                    <td class="hidden-xs">A</td>
+                    <td class="hidden-xs">GD</td>
+                    <td>PTN</td>
+                </thead>
+                <tbody>
+                    {{ render(controller('CMSTeamBundle:Team:classification', { 'teamId': 1 })) }}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

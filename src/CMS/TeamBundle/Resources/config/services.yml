@@ -1,0 +1,9 @@
+services:
+  service.statistics:
+      class: CMS\TeamBundle\Services\StatisticsService
+
+  app.listener.change_password:
+      class:  CMS\TeamBundle\EventListeners\ChangePasswordListener
+      arguments: ["@request_stack", "@router"]
+      tags:
+          - { name: 'kernel.event_subscriber'}

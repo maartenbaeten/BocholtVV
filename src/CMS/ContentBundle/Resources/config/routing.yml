@@ -1,0 +1,137 @@
+cms_mailer:
+    pattern:  /mailer/show
+    defaults:
+            _controller: FrameworkBundle:Template:template
+            template:    CMSTemplateBundle:Crossbridge:email.html.twig
+
+cms_content_homepage:
+    pattern:  /{id}/{_locale}.{_format}
+    defaults: { _controller: CMSContentBundle:Default:index, _format: html, _locale: nl, id: 1 }
+    requirements:
+      _locale:  nl|en|fr
+      _format:  html|json
+
+cms_content_homepage_param:
+    pattern:  /{id}/{_locale}/{param}
+    defaults: { _controller: CMSContentBundle:Default:index, _locale: nl, id: 1 }
+    requirements:
+      _locale:  nl|en|fr
+
+cms_content_homepage_team:
+    pattern:  /{id}/{_locale}/team/{team}
+    defaults: { _controller: CMSContentBundle:Default:index, _locale: nl, id: 1 }
+    requirements:
+      _locale:  nl|en|fr
+
+cms_content_homepage_team_news:
+    pattern:  /{id}/{_locale}/team/{team}/{newsItem}
+    defaults: { _controller: CMSContentBundle:Default:index, _locale: nl, id: 1 }
+    requirements:
+      _locale:  nl|en|fr
+
+cms_popup:
+    pattern:  /popup/{id}/{_locale}.{_format}
+    defaults: { _controller: CMSContentBundle:Default:popup, _format: html, _locale: nl, id: 1 }
+    requirements:
+      _locale:  nl|en|fr
+      _format:  html|json
+
+cms_content_menu_add:
+    pattern:  /Menu/Add
+    defaults: { _controller: CMSContentBundle:Menu:addform }
+
+cms_content_add_menu_item:
+    pattern:  /Menu/Add/Item
+    defaults: { _controller: CMSContentBundle:Menu:add }
+
+cms_content_menu:
+    pattern:  /Menu/{id}
+    defaults: { _controller: CMSContentBundle:Menu:index }
+
+cms_content_menu_items:
+    pattern:  /Menu/{id}/Items
+    defaults: { _controller: CMSContentBundle:Menu:parentItems }
+
+cms_content_menu_items_children:
+    pattern:  /Menu/{id}/Items/Children/{itemid}
+    defaults: { _controller: CMSContentBundle:Menu:children }
+
+cms_submit_contact:
+    pattern:  /Contact/submit/{menuKeyid}/{language}
+    defaults: { _controller: CMSContentBundle:Contact:submit, language: nl }
+
+add_content:
+    pattern:  /Content/add/{type}/{language}/{menuKeyid}/{position}
+    defaults: { _controller: CMSContentBundle:Content:add }
+
+add_child_category:
+    pattern:  /Category/add/{language}/{menuKeyid}/{categoryid}
+    defaults: { _controller: CMSContentBundle:Content:addChildCategory }
+
+edit_content:
+    pattern:  /Content/edit/{language}/{contentid}/{menuKeyid}
+    defaults: { _controller: CMSContentBundle:Content:edit }
+
+edit_category:
+    pattern:  /Admin/Category/edit/{language}/{categoryid}/{menuKeyid}
+    defaults: { _controller: CMSContentBundle:Content:editcategory }
+
+cms_content_unpublish_content:
+    pattern:  /Content/Unpublish/{contentid}/{language}/{menuKeyid}
+    defaults: { _controller: CMSContentBundle:Content:unpublish }
+
+cms_content_publish_content:
+    pattern:  /Content/Publish/{contentid}/{language}/{menuKeyid}
+    defaults: { _controller: CMSContentBundle:Content:publish }
+
+delete_contentposition:
+    pattern:  /Content/delete/{id}/{position}/{menuKeyid}/{language}
+    defaults: { _controller: CMSContentBundle:Content:delete }
+
+increase_ordering:
+    pattern:  /Content/ordering/increase/{id}/{position}/{menuKeyid}/{language}
+    defaults: { _controller: CMSContentBundle:Content:increase }
+
+decrease_ordering:
+    pattern:  /Content/ordering/decrease/{id}/{position}/{menuKeyid}/{language}
+    defaults: { _controller: CMSContentBundle:Content:decrease }
+
+delete_menuitem:
+    pattern:  /Menu/delete/{menuKeyid}/{language}
+    defaults: { _controller: CMSContentBundle:Menu:delete }
+
+edit_menuitem:
+    pattern:  /Menu/edit/{menuKeyid}/{language}
+    defaults: { _controller: CMSContentBundle:Menu:edit }
+
+increase_menuitem:
+    pattern:  /Menu/increase/{menuKeyid}/{language}
+    defaults: { _controller: CMSContentBundle:Menu:increase }
+
+decrease_menuitem:
+    pattern:  /Menu/decrease/{menuKeyid}/{language}
+    defaults: { _controller: CMSContentBundle:Menu:decrease }
+
+add_content_item:
+    pattern:  /Content/add/item/{categoryid}/{typeid}/{language}/{menuKeyid}
+    defaults: { _controller: CMSContentBundle:Content:addContent }
+
+delete_content_item:
+    pattern:  /Content/delete/{itemid}/{language}/{menuKeyid}
+    defaults: { _controller: CMSContentBundle:Content:deleteContent }
+
+cms_password_reset:
+    pattern:  /user/password/reset/{language}
+    defaults: { _controller: CMSUserBundle:Default:resetPasswordForm }
+
+add_tags:
+    pattern:  /Admin/Tags/edit/{language}/{contentKey}/{menuKeyid}
+    defaults: { _controller: CMSContentBundle:Content:editTags }
+
+cms_install:
+    pattern:  /install/{param}
+    defaults: { _controller: CMSContentBundle:Install:main }
+
+install:
+    pattern:  /install
+    defaults: { _controller: CMSContentBundle:Install:main }

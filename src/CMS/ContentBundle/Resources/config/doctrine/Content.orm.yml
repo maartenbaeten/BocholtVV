@@ -1,0 +1,109 @@
+CMS\ContentBundle\Entity\Content:
+    type: entity
+    table: CMS_content
+    repositoryClass: CMS\ContentBundle\Entity\ContentRepository
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        created:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        author:
+            type: string
+            scale: 0
+            length: 200
+            unique: false
+            nullable: false
+            precision: 0
+        contentTitle:
+            type: string
+            scale: 0
+            length: null
+            unique: false
+            nullable: true
+            precision: 0
+        contentAlias:
+            type: string
+            unique: true
+            nullable: true
+        content:
+            type: text
+            scale: 0
+            length: 500
+            unique: false
+            nullable: true
+            precision: 0
+        published:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            options:
+                default: 1
+        contentLink:
+            type: text
+            scale: 0
+            length: 100
+            unique: false
+            nullable: true
+            precision: 0
+        contentImage:
+            type: text
+            scale: 0
+            length: 100
+            unique: false
+            nullable: true
+            precision: 0
+        language:
+            type: text
+            scale: 0
+            length: 10
+            unique: false
+            nullable: false
+            precision: 0
+    manyToOne:
+        contentKey:
+            targetEntity: CMS\ContentBundle\Entity\ContentKey
+            cascade: {  }
+            mappedBy: null
+            inversedBy: contentItems
+            joinColumns:
+                content_key:
+                    referencedColumnName: id
+            orphanRemoval: false
+    manyToMany:
+        categories:
+            targetEntity: CMS\ContentBundle\Entity\Categories
+            cascade: {  }
+            mappedBy: null
+            inversedBy: contentItems
+            joinTable:
+                name: content_categories
+                schema: null
+                joinColumns:
+                    -
+                        name: content_id
+                        referencedColumnName: id
+                        onDelete: CASCADE
+                inverseJoinColumns:
+                    -
+                        name: categories_id
+                        referencedColumnName: id
+                        onDelete: CASCADE
+            orderBy: null
+    lifecycleCallbacks: {  }

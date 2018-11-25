@@ -1,0 +1,13 @@
+<div class="row padding-top-20" style="padding-left: 4%; padding-right: 4%;">
+    <div class="col-sm-6">
+        <div id="gmap"></div>
+    </div>
+    <div class="col-sm-6">
+        <ul class="contact-info row">
+            {{ render(controller('CMSContentBundle:Content:category', { 'id': item.content, 'menuKey': menuKey, 'template': 'CMSContentBundle:Contact:Addresses.html.twig' })) }}
+        </ul>
+    </div>
+</div>
+
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script type="text/javascript" src="/assets/js/gmaps.js"></script>

@@ -1,0 +1,28 @@
+CMS\TeamBundle\Entity\NewsAttachment:
+    type: entity
+    table: news_attachment
+    repositoryClass: CMS\TeamBundle\Repository\NewsAttachmentRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        filePath:
+            type: string
+            length: 255
+        originalName:
+            type: string
+            length: 255
+    lifecycleCallbacks:
+        prePersist: [ preUpload ]
+        preUpdate: [ preUpload ]
+        postPersist: [ upload ]
+        postUpdate: [ upload ]
+        postRemove: [ removeUpload ]
+    manyToOne:
+        news:
+            targetEntity: CMS\TeamBundle\Entity\News
+            inversedBy: attachments
+    lifecycleCallbacks: {  }

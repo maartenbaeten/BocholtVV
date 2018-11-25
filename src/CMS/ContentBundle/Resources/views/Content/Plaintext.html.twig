@@ -1,0 +1,14 @@
+{% createphp item as="rdf" noautotag %}
+<div {{ createphp_attributes(rdf) }}>
+    <div class="post" style="margin-top: 20px;">
+        <div class="post-content">
+            <h2 class="entry-title" {{ createphp_attributes( rdf.contentTitle ) }}>
+                {{ createphp_content( rdf.contentTitle ) }}
+            </h2>
+            <div class="entry-summary padding-top-10">
+                <div {{ createphp_attributes( rdf.content ) }}>{{ createphp_content( rdf.content ) }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endcreatephp %}

@@ -1,0 +1,174 @@
+{% extends "@CMSTeam/index.html.twig" %}
+
+{% block main %}
+
+    <div class="alert alert-success" id="attachmentDeletedMessage" style="position:fixed; top:80px; left:50%; display:none">
+       Attachment has been deleted.
+    </div>
+
+    <div class="row wrapper border-bottom white-bg page-heading" style="margin-bottom: 10px;">
+        <div class="col-lg-10">
+            <h2>
+                {% block title %}
+                {% endblock %}
+            </h2>
+        </div>
+    </div>
+    <div class="wrapper wrapper-content-wide animated fadeInRight">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'id': 'attachmentsForm'}}) }}
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        {{ form_widget(form.title, {'attr':{'placeholder':"Title", 'class': 'form-control'}} ) }}
+                                        {{ form_errors(form.title)}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        {{ form_widget(form.team, {'attr':{'class': 'form-control'}} ) }}
+                                        {{ form_errors(form.team)}}
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_widget(form.file, {'attr':{ 'class': 'form-control validationIsNotNeeded'}} ) }}
+                                    {{ form_errors(form.file)}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        {{ form_widget(form.content, {'attr':{'placeholder':"Content", 'class': 'form-control tinymce'}} ) }}
+                                        {{ form_errors(form.content)}}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row"  style="padding-bottom: 20px;">
+
+                                <div class="col-lg-12">
+                                    <h3>Attachments</h3>
+                                        <div class="files-list marginbottom15"  id="newsAttachmentsFiles"  data-prototype="{% filter escape %}{% include '@CMSTeam/News/attachmentsPrototype.html.twig' with { 'file': form.attachments.vars.prototype} %}{% endfilter %}">
+                                            {% for file in form.attachments %}
+                                                <div class="row collection-child item" {%if file.vars.value is not null%} id="file{{ file.vars.value.id }}"{% endif %}>
+                                                    <div class="col-md-3" style="margin-bottom:10px">
+                                                        {% if app.request.get('_route') == 'admin_news_create' %}
+                                                            {{ form_widget(file.file, {'attr':{ 'class': 'form-control', 'style': 'display:inline; width: 90%'}}) }}
+                                                            {{ form_errors(file.file) }}
+                                                        {% endif %}
+
+                                                        {%  if app.request.get('_route') == 'admin_news_update' %}
+                                                            {{ form_widget(file.file, {'attr':{ 'class': 'form-control validationIsNotNeeded', 'style': 'display:inline; width: 90%'}}) }}
+                                                            {{ form_errors(file.file) }}
+                                                            {% if file.vars.value is not null %}
+                                                                {{ file.vars.value.originalName }}
+                                                            {% endif %}
+                                                            {#<a href="#" class="deleteFile" id="{{ file.vars.value.id }}"> <i class="glyphicon glyphicon-remove" style=color:red></i></a>#}
+                                                        {% endif %}
+
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12" style="padding-bottom: 20px;">
+                                    {{ form_widget(form.save, {'attr' : {'class' : ' btn btn-lg btn-full-width btn-primary m-t-n-xs saveNewsButton'} }) }}
+                                </div>
+                            </div>
+                            <div class="hidden">
+                                {{ form_rest(form) }}
+                            </div>
+                        {{ form_end(form) }}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block customJavascripts %}
+    <script src="{{ asset('assets/js/plugins/validate/jquery.validate.min.js') }}"></script>
+    <script>
+        var $collectionHolder;
+
+        // setup an "add a tag" link
+        var $addTagLink = $("<span style='color:#1ab394' class='glyphicon glyphicon-plus'></span>");
+      //  var $newLinkLi = $('<div></div>').append($addTagLink);
+        var $newLinkLi = $addTagLink;
+
+        $(document).ready(function() {
+
+            $('.saveNewsButton').on('click', function() {
+                $('#attachmentsForm').validate().settings.ignore = ":disabled,:hidden,.validationIsNotNeeded";
+                return $('#attachmentsForm').valid();
+            });
+
+            // Get the ul that holds the collection of tags
+            $collectionHolder = $('div.files-list');
+
+            $collectionHolder.find('.item').each(function() {
+                addTagFormDeleteLink($(this));
+            });
+
+            // add the "add a tag" anchor and li to the tags ul
+            $collectionHolder.append($newLinkLi);
+
+            // count the current form inputs we have (e.g. 2), use that as the new
+            // index when inserting a new item (e.g. 2)
+            $collectionHolder.data('index', $collectionHolder.find(':input').length);
+
+            $addTagLink.on('click', function(e) {
+                // prevent the link from creating a "#" on the URL
+                e.preventDefault();
+
+                // add a new tag form (see next code block)
+                addTagForm($collectionHolder, $newLinkLi);
+            });
+
+
+            function addTagForm($collectionHolder, $newLinkLi) {
+                // Get the data-prototype explained earlier
+                var prototype = $collectionHolder.data('prototype');
+
+                // get the new index
+                var index = $collectionHolder.data('index');
+
+                // Replace '__name__' in the prototype's HTML to
+                // instead be a number based on how many items we have
+                var newForm = prototype.replace(/__name__/g, index);
+
+                // increase the index with one for the next item
+                $collectionHolder.data('index', index + 1);
+
+                // Display the form in the page in an li, before the "Add a tag" link li
+                var $newFormLi = $("<div class='row' style='margin-bottom:15px;'></div>").append(newForm);
+                $newLinkLi.before($newFormLi);
+
+                addTagFormDeleteLink($newFormLi);
+            }
+
+            function addTagFormDeleteLink($tagFormLi) {
+                var $removeFormA = $('<a href="#" class="delete-collection-item"> <i class="glyphicon glyphicon-remove" style=color:red></i></a>');
+                $tagFormLi.append($removeFormA);
+
+                $removeFormA.on('click', function(e) {
+                    // prevent the link from creating a "#" on the URL
+                    e.preventDefault();
+
+                    // remove the li for the tag form
+                    $tagFormLi.remove();
+                });
+            }
+
+        } );
+    </script>
+{% endblock %}

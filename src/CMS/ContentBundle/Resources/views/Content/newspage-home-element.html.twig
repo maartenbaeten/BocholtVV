@@ -1,0 +1,19 @@
+{% for item in content %}
+    <div class="latest-news__item">
+        <div class="latest-news__item-image-holder">
+            <a class="normal" href="{{ path('cms_content_homepage_param', {'id': 'nieuws', 'param': item.contentAlias, '_locale': app.request.locale}) }}">
+                <img class="latest-news__item-image" src="{% if item.contentImage %}{{ item.contentImage }}{% else %}/uploads/img/soccer_news_item.png{% endif %}">
+            </a>
+        </div>
+        <div class="latest-news__item-title">
+            <a class="normal" href="{{ path('cms_content_homepage_param', {'id': 'nieuws', 'param': item.contentAlias, '_locale': app.request.locale}) }}">{{ item.contentTitle }}</a>
+        </div>
+        <div class="latest-news__item-intro">
+            {{ item.getShortContent() | striptags | raw }}
+        </div>
+        <div class="latest-news__item-credentials">
+            <div class="latest-news__item-date">{{ item.created|date('d-m-Y') }}</div>
+            <div class="latest-news__item-read-more"><a href="{{ path('cms_content_homepage_param', {'id': 'nieuws', 'param': item.contentAlias, '_locale': app.request.locale}) }}" class="read-more">lees meer</a></div>
+        </div>
+    </div>
+{% endfor %}

@@ -1,0 +1,37 @@
+{% extends "@CMSTeam/index.html.twig" %}
+
+{% block main %}
+
+    <div class="row wrapper border-bottom white-bg page-heading" style="margin-bottom: 10px;">
+        <div class="col-lg-10">
+            <h2>
+                {{ item.title }}
+            </h2>
+        </div>
+    </div>
+    <div class="wrapper wrapper-content-wide animated fadeInRight">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ibox float-e-margins">
+
+                    {#TODO#}
+
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-lg-6">
+                               <img src="{{ asset('uploads/news-images/' ~ item.newsImage) }}" height="300px">
+                            </div>
+                            <div>
+                                <div class="col-lg-6">
+                                    <div class="row">
+                                        {{ item.content|raw }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
